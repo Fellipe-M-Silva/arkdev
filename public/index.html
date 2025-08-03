@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ARKDEV</title>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="media/favicon/favicon-light.svg"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="media/favicon/favicon-dark.svg"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<link href="/tailwind.css" rel="stylesheet" />
+		<link href="tailwind.css" rel="stylesheet" />
+	</head>
+	<body class="bg-gray-50 dark:bg-zinc-900 font-sans">
+		<header
+			class="sticky top-0 z-50 bg-zinc-950 text-white p-6 text-center shadow-md"
+		>
+			<img
+				src="/media/logo.svg"
+				alt="Logo ARKDEV"
+				class="h-10 w-auto text-white dark:text-blue-200"
+			/>
+		</header>
+
+		<main class="container mx-auto p-8 max-w-4xl">
+			<section class="bg-white p-8 rounded-lg mb-8">
+				<h1 class="text-4xl text-red-600 dark:text-blue-400">
+					Introdução
+				</h1>
+				<button class="primary call-to-value text-lg font-semibold">
+					Exemplo
+				</button>
+			</section>
+			<section class="bg-white p-8 rounded-lg shadow-lg mb-8">
+				<h2 class="text-3xl font-semibold text-gray-800 mb-4">
+					Sobre o Projeto
+				</h2>
+				<p class="text-gray-700 leading-relaxed">
+					Este é um exemplo de landing page construída do zero para
+					demonstrar a integração de tecnologias web modernas. Aqui,
+					você pode ver como o
+					<strong class="text-blue-600">Tailwind CSS</strong>
+					simplifica a estilização, o
+					<strong class="text-green-600">JavaScript puro</strong>
+					adiciona interatividade, e o
+					<strong class="text-purple-600">Node.js</strong> serve os
+					arquivos localmente.
+				</p>
+				<button
+					id="meuBotao"
+					class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+				>
+					Clique-me!
+				</button>
+			</section>
+
+			<section class="bg-white p-8 rounded-lg shadow-lg">
+				<h2 class="text-3xl font-semibold text-gray-800 mb-4">
+					Funcionalidades
+				</h2>
+				<ul class="list-disc list-inside text-gray-700">
+					<li class="mb-2">Estilização rápida com Tailwind CSS.</li>
+					<li class="mb-2">
+						Servidor local Node.js para desenvolvimento.
+					</li>
+					<li class="mb-2">Interatividade com JavaScript puro.</li>
+				</ul>
+			</section>
+		</main>
+
+		<footer class="bg-gray-800 text-white text-center p-4 mt-8">
+			<p>&copy; 2025 Minha Landing Page. Todos os direitos reservados.</p>
+		</footer>
+
+		<script src="/script.js"></script>
+	</body>
+</html>
