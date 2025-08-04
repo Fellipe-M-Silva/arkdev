@@ -5,27 +5,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	const menuOverlay = document.getElementById("menu-overlay");
 	const mobileMenu = document.getElementById("menu-mobile");
 
-	if (menuOverlay && mobileMenu) {
-		menuOverlay.classList.add("hidden-mobile-menu");
-		mobileMenu.classList.add("slide-out-mobile");
-	}
-
 	const openMenu = () => {
 		if (menuOverlay && mobileMenu) {
-			menuOverlay.classList.remove("hidden-mobile-menu");
-			mobileMenu.classList.remove("slide-out-mobile");
-			menuOverlay.classList.add("open-mobile-menu");
-			mobileMenu.classList.add("slide-in-mobile");
+			menuOverlay.classList.remove("opacity-0", "pointer-events-none");
+			menuOverlay.classList.add("opacity-100");
+			mobileMenu.classList.remove("translate-x-full");
+			mobileMenu.classList.add("translate-x-0");
 			document.body.style.overflow = "hidden";
 		}
 	};
 
 	const closeMenu = () => {
 		if (menuOverlay && mobileMenu) {
-			menuOverlay.classList.remove("open-mobile-menu");
-			mobileMenu.classList.remove("slide-in-mobile");
-			menuOverlay.classList.add("hidden-mobile-menu");
-			mobileMenu.classList.add("slide-out-mobile");
+			menuOverlay.classList.remove("opacity-100");
+			menuOverlay.classList.add("opacity-0", "pointer-events-none");
+			mobileMenu.classList.remove("translate-x-0");
+			mobileMenu.classList.add("translate-x-full");
 
 			setTimeout(() => {
 				document.body.style.overflow = "auto";
@@ -44,7 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// === Lógica de Rolagem Suave e Fechamento do Menu ===
+	// Seleciona os links do menu principal e do menu mobile
 	const allLinks = document.querySelectorAll("a[href^='#']");
+
 	allLinks.forEach((link) => {
 		link.addEventListener("click", (e) => {
 			e.preventDefault();
@@ -57,9 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
 					behavior: "smooth",
 				});
 
+				// Verifica se o menu mobile está aberto e o fecha
 				if (
-					menuOverlay &&
-					!menuOverlay.classList.contains("hidden-mobile-menu")
+					mobileMenu &&
+					!mobileMenu.classList.contains("translate-x-full")
 				) {
 					closeMenu();
 				}
@@ -116,5 +114,55 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (heroSlides.length > 0) {
 		showSlide(currentSlide);
 		startAutoSlide();
+	}
+
+	// === Lógica do Carrossel de Depoimentos ===
+	const testimonialCarousel = document.querySelector(".testimonial-carousel");
+	const prevButton = document.getElementById("prev-testimonial");
+	const nextButton = document.getElementById("next-testimonial");
+	const testimonialItems = document.querySelectorAll(".testimonial");
+
+	if (
+		testimonialCarousel &&
+		prevButton &&
+		nextButton &&
+		testimonialItems.length > 0
+	) {
+		const itemWidth = testimonialItems[0].offsetWidth + 24; // Largura do item + gap (gap-6 = 24px)
+		let currentScrollPosition = 0;
+
+		// Navega para a esquerda (depoimento anterior)
+		prevButton.addEventListener("click", () => {
+			if (currentScrollPosition > 0) {
+				currentScrollPosition -= itemWidth;
+				testimonialCarousel.scrollTo({
+					left: currentScrollPosition,
+					behavior: "smooth",
+				});
+			}
+		});
+
+		// Navega para a direita (próximo depoimento) e reseta no final
+		nextButton.addEventListener("click", () => {
+			const maxScroll =
+				testimonialCarousel.scrollWidth -
+				testimonialCarousel.clientWidth;
+
+			// Se não for o último item, avança
+			if (currentScrollPosition < maxScroll) {
+				currentScrollPosition += itemWidth;
+				testimonialCarousel.scrollTo({
+					left: currentScrollPosition,
+					behavior: "smooth",
+				});
+			} else {
+				// Se for o último, volta para o início
+				currentScrollPosition = 0;
+				testimonialCarousel.scrollTo({
+					left: currentScrollPosition,
+					behavior: "smooth",
+				});
+			}
+		});
 	}
 });

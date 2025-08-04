@@ -101,7 +101,7 @@
 }
 
 .slide-out-mobile {
-	@apply -translate-x-full;
+	@apply translate-x-full;
 }
 
 .slide-in-mobile {
@@ -342,8 +342,14 @@ p {
 }
 
 .testimonial-carousel {
-	/* max-width: 1920px; */
-	@apply flex gap-6 overflow-x-auto snap-x snap-mandatory;
+	@apply flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide;
+}
+.testimonial-carousel::-webkit-scrollbar {
+	display: none;
+}
+.testimonial-carousel {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 .testimonial {
 	@apply flex-none w-full md:w-1/2 lg:w-1/3 snap-center p-6 bg-shark-50  rounded-xl;
