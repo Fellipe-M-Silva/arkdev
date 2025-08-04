@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.icon-button {
+	@apply bg-white text-zinc-800 p-2 rounded-full flex items-center justify-center transition-colors duration-200;
+}
+
+.icon-button:hover {
+	@apply bg-zinc-100;
+}
+
+.icon-button:active {
+	@apply bg-zinc-200;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

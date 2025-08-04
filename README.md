@@ -1,2 +1,0 @@
-# arkdev
-Landing page ARKDEV

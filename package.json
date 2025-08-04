@@ -1,24 +1,25 @@
 {
-  "name": "arkdev-v2",
+  "name": "arkdev",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build:css": "tailwindcss -i ./public/style.css -o ./public/tailwind.css --watch",
-    "dev": "concurrently \"npm:build:css\" \"npm:start\""
+    "tailwind:build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css",
+    "tailwind:watch": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "dev-server": "node src/server.js",
+    "dev": "concurrently \"npm run tailwind:watch\" \"npm run dev-server\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "concurrently": "^9.2.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.3"
-  },
   "dependencies": {
-    "express": "^5.1.0"
+    "@tailwindcss/cli": "^4.1.11",
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "live-server": "^1.2.2"
   }
 }
