@@ -72,7 +72,7 @@
 		</header>
 
 		<main class="flex flex-col items-center">
-			<section id="hero-section">
+			<section id="hero-section" class="relative">
 				<div id="hero-content" class="content">
 					<span id="hero-chip" class="hero-chip petroleo">
 						<img
@@ -82,8 +82,10 @@
 						/>
 						Lorem ipsum dolor</span
 					>
-					<h1 class="text-3xl font-medium mb-4">Lorem ipsum dolor</h1>
-					<p>
+					<h1 class="text-3xl font-medium bg-white px-4">
+						Lorem ipsum dolor
+					</h1>
+					<p class="bg-white p-4">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis volutpat quis odio eget efficitur! Use this link
 						and fusce mollis felis non pharetra feugiat
@@ -95,6 +97,7 @@
 						<button class="cta-secondary">Entre em contato</button>
 					</div>
 				</div>
+
 				<div id="caroussel-tabs" class="content">
 					<ul>
 						<li id="tab-1" class="active">Petróleo e Gás</li>
@@ -102,6 +105,18 @@
 						<li id="tab-3">Motores a diesel</li>
 					</ul>
 				</div>
+
+				<img
+					src="./media/images/placeholder.png"
+					alt="Sua imagem hero"
+					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10 hero-masked-image"
+				/>
+
+				<!-- <img
+					src="./media/mask.svg"
+					alt="Hero Image"
+					class="absolute bottom-16 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-auto -z-10"
+				/> -->
 			</section>
 
 			<section id="partners-section" class="bg-shark-50">
