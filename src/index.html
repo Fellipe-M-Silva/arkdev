@@ -4,18 +4,26 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./output.css" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
 	</head>
-	<body class="bg-white color-zinc-800">
-		<header class="sticky top-0 z-50 flex justify-center items-center bg-white/90 backdrop-blur-xs px-4 md:px-10 py-4">
+	<body class="bg-white color-shark-800">
+		<header
+			class="sticky top-0 z-50 flex justify-center items-center bg-white/90 backdrop-blur-xs px-4 md:px-10 py-4"
+		>
 			<div class="container flex flex-row items-center">
 				<div class="mr-auto">
 					<img src="./images/logo.png" alt="Logo" class="h-8" />
 				</div>
-				<nav>
+				<nav class="hidden md:block">
 					<ul class="flex space-x-4">
 						<li>
 							<a href="#solutions-section">Soluções</a>
@@ -29,33 +37,47 @@
 					</ul>
 				</nav>
 				<div class="flex flex-row gap-0.5 ml-4">
-					<button class="icon-button">
+					<button
+						class="icon-button flex items-center justify-center"
+					>
 						<span class="material-symbols-outlined">dark_mode</span>
 					</button>
-					<button class="icon-button">
+					<button
+						class="icon-button flex items-center justify-center"
+					>
 						<span class="material-symbols-outlined">language</span>
 						<span class="material-symbols-outlined"
 							>keyboard_arrow_down</span
 						>
 					</button>
-					<button class="icon-button">
+					<button
+						class="icon-button flex items-center justify-center md:hidden"
+					>
 						<span class="material-symbols-outlined">menu</span>
 					</button>
 				</div>
 			</div>
 		</header>
-		<main class="flex flex-col items-center px-4 md:px-10">
-			<section id="hero-section" class="flex flex-col items-center justify-center">
+
+		<main class="flex flex-col items-center">
+			<section
+				id="hero-section"
+				class="flex flex-col items-center justify-center"
+			>
 				<div id="hero-content" class="container">
-					<span class="hero-chip">Lorem ipsum dolor</span>
-					<h1 class="text-3xl font-medium">Lorem ipsum dolor</h1>
+					<span id="hero-chip" class="hero-chip petroleo"
+						>Lorem ipsum dolor</span
+					>
+					<h1 class="text-3xl font-medium mb-4">Lorem ipsum dolor</h1>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis volutpat quis odio eget efficitur! Use this link
 						and fusce mollis felis non pharetra feugiat
 					</p>
-					<div>
-						<button class="cta-primary">Confira as nossas soluções</button>
+					<div class="flex flex-col md:flex-row gap-4 mt-6">
+						<button class="cta-primary">
+							Confira as nossas soluções
+						</button>
 						<button class="cta-secondary">Entre em contato</button>
 					</div>
 				</div>
@@ -68,14 +90,16 @@
 				</div>
 			</section>
 
-			<section id="partners-section">
-				<div class="container">
-					<p>
+			<section id="partners-section" class="bg-shark-50 md:px-10 py-4">
+				<div class="flex flex-col md:flex-row gap-6">
+					<p class="text-lg font-semibold w-1/3">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Duis volutpat quis odio eget efficitur! Use this link
 						and fusce mollis felis non pharetra feugiat
 					</p>
-					<div class="flex flex-row gap-4">
+					<div
+						class="flex flex-row gap-4 w-2/3 justify-center items-center"
+					>
 						<img src="./images/partner1.png" alt="Partner 1" />
 						<img src="./images/partner2.png" alt="Partner 2" />
 						<img src="./images/partner3.png" alt="Partner 3" />
@@ -85,8 +109,8 @@
 
 			<section id="solutions-section">
 				<div class="container">
-					<div class="title-subtitle">
-						<h2 class="text-2xl font-semibold">Nossas soluções</h2>
+					<div class="title-and-subtitle">
+						<h2>Nossas soluções</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Duis volutpat quis odio eget efficitur! Use
@@ -97,8 +121,10 @@
 				</div>
 
 				<article class="solution">
-					<div>
-						<span class="chip chip-petroleo">Petróleo e gás</span>
+					<div class="solution-content">
+						<span class="category-chip category-chip-petroleo"
+							>Petróleo e gás</span
+						>
 						<h3>Sistema de verificação de válvulas</h3>
 						<hr class="h3-underscore" />
 						<div class="chip-container">
@@ -121,14 +147,16 @@
 				</article>
 
 				<article class="solution">
-					<div>
-						<span class="chip chip-petroleo">Petróleo e gás</span>
+					<div class="solution-content">
+						<span class="category-chip category-chip-ciberseguranca"
+							>Cibersegurança</span
+						>
 						<h3>Sistema de verificação de válvulas</h3>
 						<hr class="h3-underscore" />
 						<div class="chip-container">
-							<span class="chip chip-petroleo">IoT</span>
-							<span class="chip chip-ciberseguranca">Mobile</span>
-							<span class="chip chip-motores">Nuvem</span>
+							<span class="chip">IoT</span>
+							<span class="chip">Mobile</span>
+							<span class="chip">Nuvem</span>
 						</div>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -145,14 +173,16 @@
 				</article>
 
 				<article class="solution">
-					<div>
-						<span class="chip chip-petroleo">Petróleo e gás</span>
+					<div class="solution-content">
+						<span class="category-chip category-chip-ciberseguranca"
+							>Cibersegurança</span
+						>
 						<h3>Sistema de verificação de válvulas</h3>
 						<hr class="h3-underscore" />
 						<div class="chip-container">
-							<span class="chip chip-petroleo">IoT</span>
-							<span class="chip chip-ciberseguranca">Mobile</span>
-							<span class="chip chip-motores">Nuvem</span>
+							<span class="chip">IoT</span>
+							<span class="chip">Mobile</span>
+							<span class="chip">Nuvem</span>
 						</div>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -169,14 +199,16 @@
 				</article>
 
 				<article class="solution">
-					<div>
-						<span class="chip chip-petroleo">Petróleo e gás</span>
+					<div class="solution-content">
+						<span class="category-chip category-chip-motores"
+							>Motores a diesel</span
+						>
 						<h3>Sistema de verificação de válvulas</h3>
 						<hr class="h3-underscore" />
 						<div class="chip-container">
-							<span class="chip chip-petroleo">IoT</span>
-							<span class="chip chip-ciberseguranca">Mobile</span>
-							<span class="chip chip-motores">Nuvem</span>
+							<span class="chip">IoT</span>
+							<span class="chip">Mobile</span>
+							<span class="chip">Nuvem</span>
 						</div>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -193,14 +225,16 @@
 				</article>
 
 				<article class="solution">
-					<div>
-						<span class="chip chip-petroleo">Petróleo e gás</span>
+					<div class="solution-content">
+						<span class="category-chip category-chip-motores"
+							>Motores a diesel</span
+						>
 						<h3>Sistema de verificação de válvulas</h3>
 						<hr class="h3-underscore" />
 						<div class="chip-container">
-							<span class="chip chip-petroleo">IoT</span>
-							<span class="chip chip-ciberseguranca">Mobile</span>
-							<span class="chip chip-motores">Nuvem</span>
+							<span class="chip">IoT</span>
+							<span class="chip">Mobile</span>
+							<span class="chip">Nuvem</span>
 						</div>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -216,12 +250,39 @@
 					/>
 				</article>
 
+				<article class="solution">
+					<div class="solution-content">
+						<span class="category-chip category-chip-motores"
+							>Motores a diesel</span
+						>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip">IoT</span>
+							<span class="chip">Mobile</span>
+							<span class="chip">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
 			</section>
 
 			<section id="testimonials-section">
-				<div class="container">
-					<div class="title-subtitle">
-						<h2 class="text-2xl font-semibold">Nossas soluções</h2>
+				<div>
+					<div class="title-and-subtitle container">
+						<h2 class="text-2xl font-semibold">
+							O que nossos clientes dizem
+						</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Duis volutpat quis odio eget efficitur! Use
@@ -230,52 +291,289 @@
 						</p>
 					</div>
 
-					<div id="testimonial-carousel" class="testimonial-carousel">
-						<article class="testimonial">
-							<div class="testimonial-content">
-								<div class="testimonial-rating">
-									<span
-										class="material-symbols-outlined icon-filled"
-									>
-										star
-									</span>
-									<span
-										class="material-symbols-outlined icon-filled"
-									>
-										star
-									</span>
-									<span
-										class="material-symbols-outlined icon-filled"
-									>
-										star
-									</span>
-									<span
-										class="material-symbols-outlined icon-filled"
-									>
-										star
-									</span>
-									<span
-										class="material-symbols-outlined icon-filled"
-									>
-										star
-									</span>
+					<div id="testimonial-carousel" class="bg-shark-50">
+						<div
+							class="container testimonial-carousel py:4 md:py-10"
+						>
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
 								</div>
-								<p class="testimonial-first-quote">
-									“Lorem ipsum dolor sit amet,”
-								</p>
-								<p>
-									Consectetur adipiscing elit. Duis volutpat
-									quis odio eget efficitur! Use this link and
-									fusce mollis felis non pharetra feugiat
-								</p>
-								<div class="testimonial-author">
-									<span class="author-name">John Doe</span>
+							</article>
+
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
 								</div>
-							</div>
-						</article>
+							</article>
+
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
+								</div>
+							</article>
+
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
+								</div>
+							</article>
+
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
+								</div>
+							</article>
+
+							<article class="testimonial">
+								<div class="testimonial-content">
+									<div class="testimonial-rating">
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+										<span
+											class="material-symbols-outlined icon-filled"
+										>
+											star
+										</span>
+									</div>
+									<p class="testimonial-first-quote">
+										“Lorem ipsum dolor sit amet,”
+									</p>
+									<p>
+										Consectetur adipiscing elit. Duis
+										volutpat quis odio eget efficitur! Use
+										this link and fusce mollis felis non
+										pharetra feugiat
+									</p>
+									<div class="testimonial-author">
+										<span class="author-name"
+											>– John Doe</span
+										>
+									</div>
+								</div>
+							</article>
+						</div>
 					</div>
 
-					<div id="textimonial-controls" class="flex justify-center">
+					<div id="testimonial-controls" class="flex justify-center">
 						<button class="icon-button">
 							<span class="material-symbols-outlined"
 								>chevron_left</span
@@ -292,7 +590,7 @@
 
 			<section id="contact-section">
 				<div class="container">
-					<div class="title-subtitle">
+					<div class="title-and-subtitle">
 						<h2 class="text-2xl font-semibold">Entre em contato</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -301,55 +599,85 @@
 							feugiat
 						</p>
 					</div>
-				</div>
-				<div class="form-container">
-					<form>
-						<div class="form-group">
-							<label for="name">Nome</label>
-							<input
-								type="text"
-								id="name"
-								name="name"
-								placeholder="Digite seu nome"
-								required
-							/>
-						</div>
-						<div class="form-group">
-							<label for="email">E-mail</label>
-							<input
-								type="email"
-								id="email"
-								name="email"
-								placeholder="Digite seu e-mail"
-								required
-							/>
-						</div>
-						<div class="form-group">
-							<label for="how-met">Por onde nos conheceu?</label>
-							<select id="how-met" name="how-met" required>
-								<option value="">Selecione uma opção</option>
-								<option value="google">Google</option>
-								<option value="facebook">Facebook</option>
-								<option value="instagram">Instagram</option>
-								<option value="outro">Outro</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="message">Mensagem</label>
-							<textarea
-								id="message"
-								name="message"
-								placeholder="Digite sua mensagem"
-								required
-							></textarea>
+					<div class="form-container">
+						<form>
+							<div
+								class="md:grid md:grid-cols-2 md:gap-4 md:mb-2"
+							>
+								<div class="form-group md:col-span-1">
+									<label for="name">Nome</label>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										placeholder="Digite seu nome"
+										required
+									/>
+								</div>
+								<div class="form-group md:col-span-1">
+									<label for="email">E-mail</label>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										placeholder="Digite seu e-mail"
+										required
+									/>
+								</div>
+								<div class="form-group md:col-span-1">
+									<label for="telephone">Telefone</label>
+									<input
+										type="tel"
+										id="telephone"
+										name="telephone"
+										placeholder="Digite seu telefone"
+										required
+									/>
+								</div>
+								<div class="form-group md:col-span-1">
+									<label for="how-met"
+										>Por onde nos conheceu?</label
+									>
+									<select
+										id="how-met"
+										name="how-met"
+										required
+									>
+										<option value="">
+											Selecione uma opção
+										</option>
+										<option value="google">Google</option>
+										<option value="facebook">
+											Facebook
+										</option>
+										<option value="instagram">
+											Instagram
+										</option>
+										<option value="outro">Outro</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="message">Mensagem</label>
+								<textarea
+									id="message"
+									name="message"
+									placeholder="Digite sua mensagem"
+									required
+								></textarea>
+							</div>
 
 							<div class="form-footer">
-								<p>Ao enviar, você concorda com nossa política de privacidade.</p>
-								<button type="submit" class="submit-button">
+								<p>
+									Ao enviar, você concorda com nossa política
+									de privacidade.
+								</p>
+								<button type="submit" class="primary">
 									Enviar
 								</button>
 							</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -365,7 +693,7 @@
 					</div>
 					<div>
 						<h6>Endereço</h6>
-						<hr>
+						<hr />
 						<p>Rua Exemplo, 123</p>
 						<p>CEP: 12345-678</p>
 						<p>Centro, Quixadá–CE, Brasil</p>
@@ -373,7 +701,7 @@
 
 					<div>
 						<h6>Contato</h6>
-						<hr>
+						<hr />
 						<p><span>Telefone</span> +55 85 91234-5678</p>
 						<p><span>WhatsApp</span> +55 85 99876-5432</p>
 						<p><span>Email</span> contact@arkdev.systems</p>
@@ -383,7 +711,7 @@
 
 					<div>
 						<h6>Horário de atendimento</h6>
-						<hr>
+						<hr />
 						<p><span>Segunda</span> 08:00–18:00</p>
 						<p><span>Terça</span> 08:00–18:00</p>
 						<p><span>Quarta</span> 08:00–18:00</p>
@@ -393,9 +721,10 @@
 					</div>
 				</div>
 
-				<hr>
+				<hr />
 				<p>
-					© 2025 ArkDev. Todos os direitos reservados. | <a href="#">Política de Privacidade</a>
+					© 2025 ArkDev. Todos os direitos reservados. |
+					<a href="#">Política de Privacidade</a>
 				</p>
 				<img src="./media/footer-banner.png" alt="Always beyond" />
 			</div>

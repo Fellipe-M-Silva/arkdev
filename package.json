@@ -19,7 +19,9 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.0",
+    "postcss": "^8.5.6"
   }
 }
