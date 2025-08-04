@@ -342,10 +342,14 @@ p {
 }
 
 .testimonial-carousel {
-	@apply flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide;
-}
-.testimonial-carousel::-webkit-scrollbar {
-	display: none;
+	@apply flex gap-6 overflow-x-auto snap-x snap-mandatory;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
 .testimonial-carousel {
 	-ms-overflow-style: none;
