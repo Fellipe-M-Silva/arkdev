@@ -4,20 +4,401 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="./output.css" rel="stylesheet" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
 	</head>
 	<body class="bg-white color-zinc-800">
-		<header class="flex justify-between items-center bg-white p-2">
-			<nav class="bg-white p-4">
-				<ul class="flex space-x-4">
-					<li><a href="#" class="text-zinc-800 hover:text-zinc-950 hover:font-semibold">Soluções</a></li>
-					<li><a href="#" class="text-zinc-800 hover:text-zinc-950 hover:font-semibold">Depoimentos</a></li>
-					<li><a href="#" class="text-zinc-800 hover:text-zinc-950 hover:font-semibold">Contato</a></li>
-				</ul>
-				<div class="flex- gap-0.5">
-					<button class="icon-button"><span class="material-symbols-outlined">menu</span></button>
+		<header class="sticky top-0 z-50 flex justify-center items-center bg-white/90 backdrop-blur-xs px-4 md:px-10 py-4">
+			<div class="container flex flex-row items-center">
+				<div class="mr-auto">
+					<img src="./images/logo.png" alt="Logo" class="h-8" />
 				</div>
+				<nav>
+					<ul class="flex space-x-4">
+						<li>
+							<a href="#solutions-section">Soluções</a>
+						</li>
+						<li>
+							<a href="#testimonials-section">Depoimentos</a>
+						</li>
+						<li>
+							<a href="#contact-section">Contato</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="flex flex-row gap-0.5 ml-4">
+					<button class="icon-button">
+						<span class="material-symbols-outlined">dark_mode</span>
+					</button>
+					<button class="icon-button">
+						<span class="material-symbols-outlined">language</span>
+						<span class="material-symbols-outlined"
+							>keyboard_arrow_down</span
+						>
+					</button>
+					<button class="icon-button">
+						<span class="material-symbols-outlined">menu</span>
+					</button>
+				</div>
+			</div>
 		</header>
-		<h1 class="text-3xl font-bold underline italic">Hello world!</h1>
+		<main class="flex flex-col items-center px-4 md:px-10">
+			<section id="hero-section">
+				<div class="container">
+					<span>Lorem ipsum dolor</span>
+					<h1 class="text-3xl font-medium">Lorem ipsum dolor</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Duis volutpat quis odio eget efficitur! Use this link
+						and fusce mollis felis non pharetra feugiat
+					</p>
+					<div>
+						<button>Confira as nossas soluções</button>
+						<button>Entre em contato</button>
+					</div>
+				</div>
+				<div id="caroussel-tabs" class="container">
+					<ul>
+						<li>Petróleo e gás</li>
+						<li>Cibersegurança</li>
+						<li>Motores a diesel</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="partners-section">
+				<div class="container">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						Duis volutpat quis odio eget efficitur! Use this link
+						and fusce mollis felis non pharetra feugiat
+					</p>
+					<div class="flex flex-row gap-4">
+						<img src="./images/partner1.png" alt="Partner 1" />
+						<img src="./images/partner2.png" alt="Partner 2" />
+						<img src="./images/partner3.png" alt="Partner 3" />
+					</div>
+				</div>
+			</section>
+
+			<section id="solutions-section">
+				<div class="container">
+					<div class="title-subtitle">
+						<h2 class="text-2xl font-semibold">Nossas soluções</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+				</div>
+
+				<article class="solution">
+					<div>
+						<span class="chip chip-petroleo">Petróleo e gás</span>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip chip-petroleo">IoT</span>
+							<span class="chip chip-ciberseguranca">Mobile</span>
+							<span class="chip chip-motores">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
+
+				<article class="solution">
+					<div>
+						<span class="chip chip-petroleo">Petróleo e gás</span>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip chip-petroleo">IoT</span>
+							<span class="chip chip-ciberseguranca">Mobile</span>
+							<span class="chip chip-motores">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
+
+				<article class="solution">
+					<div>
+						<span class="chip chip-petroleo">Petróleo e gás</span>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip chip-petroleo">IoT</span>
+							<span class="chip chip-ciberseguranca">Mobile</span>
+							<span class="chip chip-motores">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
+
+				<article class="solution">
+					<div>
+						<span class="chip chip-petroleo">Petróleo e gás</span>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip chip-petroleo">IoT</span>
+							<span class="chip chip-ciberseguranca">Mobile</span>
+							<span class="chip chip-motores">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
+
+				<article class="solution">
+					<div>
+						<span class="chip chip-petroleo">Petróleo e gás</span>
+						<h3>Sistema de verificação de válvulas</h3>
+						<hr class="h3-underscore" />
+						<div class="chip-container">
+							<span class="chip chip-petroleo">IoT</span>
+							<span class="chip chip-ciberseguranca">Mobile</span>
+							<span class="chip chip-motores">Nuvem</span>
+						</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+					<img
+						src="./images/solution1.png"
+						alt="Sistema de verificação de válvulas"
+						class="solution-image"
+					/>
+				</article>
+
+			</section>
+
+			<section id="testimonials-section">
+				<div class="container">
+					<div class="title-subtitle">
+						<h2 class="text-2xl font-semibold">Nossas soluções</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+
+					<div id="testimonial-carousel" class="testimonial-carousel">
+						<article class="testimonial">
+							<div class="testimonial-content">
+								<div class="testimonial-rating">
+									<span
+										class="material-symbols-outlined icon-filled"
+									>
+										star
+									</span>
+									<span
+										class="material-symbols-outlined icon-filled"
+									>
+										star
+									</span>
+									<span
+										class="material-symbols-outlined icon-filled"
+									>
+										star
+									</span>
+									<span
+										class="material-symbols-outlined icon-filled"
+									>
+										star
+									</span>
+									<span
+										class="material-symbols-outlined icon-filled"
+									>
+										star
+									</span>
+								</div>
+								<p class="testimonial-first-quote">
+									“Lorem ipsum dolor sit amet,”
+								</p>
+								<p>
+									Consectetur adipiscing elit. Duis volutpat
+									quis odio eget efficitur! Use this link and
+									fusce mollis felis non pharetra feugiat
+								</p>
+								<div class="testimonial-author">
+									<span class="author-name">John Doe</span>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<div id="textimonial-controls" class="flex justify-center">
+						<button class="icon-button">
+							<span class="material-symbols-outlined"
+								>chevron_left</span
+							>
+						</button>
+						<button class="icon-button">
+							<span class="material-symbols-outlined"
+								>chevron_right</span
+							>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact-section">
+				<div class="container">
+					<div class="title-subtitle">
+						<h2 class="text-2xl font-semibold">Entre em contato</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Duis volutpat quis odio eget efficitur! Use
+							this link and fusce mollis felis non pharetra
+							feugiat
+						</p>
+					</div>
+				</div>
+				<div class="form-container">
+					<form>
+						<div class="form-group">
+							<label for="name">Nome</label>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Digite seu nome"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="email">E-mail</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								placeholder="Digite seu e-mail"
+								required
+							/>
+						</div>
+						<div class="form-group">
+							<label for="how-met">Por onde nos conheceu?</label>
+							<select id="how-met" name="how-met" required>
+								<option value="">Selecione uma opção</option>
+								<option value="google">Google</option>
+								<option value="facebook">Facebook</option>
+								<option value="instagram">Instagram</option>
+								<option value="outro">Outro</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="message">Mensagem</label>
+							<textarea
+								id="message"
+								name="message"
+								placeholder="Digite sua mensagem"
+								required
+							></textarea>
+
+							<div class="form-footer">
+								<p>Ao enviar, você concorda com nossa política de privacidade.</p>
+								<button type="submit" class="submit-button">
+									Enviar
+								</button>
+							</div>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="container">
+				<img src="logo.png" alt="Logo" />
+
+				<div>
+					<div>
+						<img src="./media/icon.png" alt="icon" />
+						<p>lorem ipsum dolor sit amet</p>
+					</div>
+					<div>
+						<h6>Endereço</h6>
+						<hr>
+						<p>Rua Exemplo, 123</p>
+						<p>CEP: 12345-678</p>
+						<p>Centro, Quixadá–CE, Brasil</p>
+					</div>
+
+					<div>
+						<h6>Contato</h6>
+						<hr>
+						<p><span>Telefone</span> +55 85 91234-5678</p>
+						<p><span>WhatsApp</span> +55 85 99876-5432</p>
+						<p><span>Email</span> contact@arkdev.systems</p>
+						<p><span>Suporte</span> support@arkdev.systems</p>
+						<p><span>Vendas</span> sales@arkdev.systems</p>
+					</div>
+
+					<div>
+						<h6>Horário de atendimento</h6>
+						<hr>
+						<p><span>Segunda</span> 08:00–18:00</p>
+						<p><span>Terça</span> 08:00–18:00</p>
+						<p><span>Quarta</span> 08:00–18:00</p>
+						<p><span>Quinta</span> 08:00–18:00</p>
+						<p><span>Sexta</span> 08:00–18:00</p>
+						<p><span>Sábado</span> 08:00–12:00</p>
+					</div>
+				</div>
+
+				<hr>
+				<p>
+					© 2025 ArkDev. Todos os direitos reservados. | <a href="#">Política de Privacidade</a>
+				</p>
+				<img src="./media/footer-banner.png" alt="Always beyond" />
+			</div>
+		</footer>
 	</body>
 </html>
