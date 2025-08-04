@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import './custom.css';
+/* @import "./custom.css"; */
 
 @theme {
 	--color-tan-hide-50: #fff7ed;
@@ -75,8 +75,78 @@
 	background-size: 10px;
 }
 
-nav ul li a {
+#menu ul li a {
 	@apply text-shark-800 hover:text-shark-950 hover:font-semibold transition-colors duration-200;
+}
+
+#menu-mobile ul li a {
+	@apply text-lg text-shark-800 focus:text-shark-950 focus:font-semibold transition-colors duration-200 mb-6;
+}
+
+.menu-overlay {
+	@apply transition-opacity duration-300;
+}
+
+#menu-mobile {
+	@apply transition-transform duration-300;
+}
+
+.fade-in {
+	animation: fade-in 0.3s forwards;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.fade-out {
+	animation: fade-out 0.3s forwards;
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.slide-in {
+	animation: slide-in 0.3s forwards;
+}
+
+@keyframes slide-in {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.slide-out {
+	animation: slide-out 0.3s forwards;
+}
+
+@keyframes slide-out {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+.animated-hide {
+	opacity: 0;
+	transform: translateX(100%);
+	pointer-events: none;
 }
 
 /* Seções */
@@ -143,18 +213,17 @@ section {
 	@apply border-t-puerto-rico-600 text-shark-950 font-semibold;
 }
 .hero-masked-image {
-  mask-image: url('../media/mask.svg');
-  -webkit-mask-image: url('../media/mask.svg'); 
+	mask-image: url("../media/mask.svg");
+	-webkit-mask-image: url("../media/mask.svg");
 
-  mask-position: center;
-  -webkit-mask-position: center;
+	mask-position: center;
+	-webkit-mask-position: center;
 
-  mask-size: contain;
-  -webkit-mask-size: contain;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
+	mask-size: contain;
+	-webkit-mask-size: contain;
+	mask-repeat: no-repeat;
+	-webkit-mask-repeat: no-repeat;
 }
-
 
 /* Seção de soluções */
 .chip {
