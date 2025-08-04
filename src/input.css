@@ -104,7 +104,7 @@ section {
 .hero-chip {
 	font-family: "Roboto Mono", monospace;
 	text-transform: uppercase;
-	@apply inline-block px-4 py-2 rounded-full text-sm
+	@apply inline-block pl-2 pr-4 py-2 rounded-full text-sm
 		font-semibold bg-shark-50 text-shark-800 mb-8;
 }
 .hero-chip.petroleo {
@@ -165,13 +165,16 @@ section {
 }
 
 .solution {
-	@apply flex flex-col md:flex-row gap-6 items-center mb-12;
+	@apply flex flex-col md:flex-row gap-6 items-start mb-12;
 }
 #solutions-section > :nth-child(even):not(:first-child) {
 	@apply md:flex-row-reverse;
 }
 .solution-content {
 	@apply w-full md:w-1/2 flex flex-col gap-4;
+}
+.solution-content p {
+	@apply md:w-1/2;
 }
 .solution-image {
 	@apply w-full md:w-1/2 rounded-lg object-cover;
@@ -293,7 +296,7 @@ p {
 .form-group input,
 .form-group select,
 .form-group textarea {
-	@apply w-full p-3 border border-gray-400 rounded-md focus:ring-2 focus:ring-tan-hide-500 focus:outline-none;
+	@apply w-full p-3 focus:bg-white border border-gray-600 rounded-md focus:ring-2 focus:ring-tan-hide-500 focus:outline-none;
 }
 
 .form-footer {
@@ -308,7 +311,7 @@ footer {
 	@apply mt-10 px-4 md:px-10 flex flex-col items-center justify-center text-white;
 }
 footer .inverse {
-	@apply bg-shark-950 text-white rounded-t-4xl px-4 md:px-8 pt-8 pb-40;
+	@apply bg-shark-950 text-white rounded-t-4xl px-4 md:px-8 pt-8 pb-0;
 }
 
 .footer-section {
@@ -321,10 +324,10 @@ footer .inverse {
 	@apply border-t-2 border-tan-hide-200 mb-4 w-10;
 }
 .footer-section span {
-	@apply text-shark-100 font-semibold min-w-20 inline-block;
+	@apply text-shark-100 font-semibold min-w-[100px] inline-block;
 }
 .footer-section p {
-	@apply text-shark-200 text-sm mb-1;
+	@apply text-shark-200 text-base mb-1;
 }
 
 @tailwind base;

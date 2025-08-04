@@ -14,6 +14,18 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
+		<title>ARKDEV Tech Systems</title>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="media/favicon/favicon-light.svg"
+		/>
+		<link rel="icon" type="image/svg+xml"
+		href="media/favicon/favicon-dark.svg" media="(prefers-color-scheme:
+		dark)/>
+
+		<meta name="description" content="ARKDEV Tech Systems" />
+		<meta name="author" content="ARKDEV Tech Systems" />
 	</head>
 	<body class="bg-white text-shark-800">
 		<header
@@ -21,7 +33,7 @@
 		>
 			<div class="content flex flex-row justify-between items-center">
 				<div class="mr-auto">
-					<img src="./images/logo.png" alt="Logo" class="h-8" />
+					<img src="./media/logo-header.svg" alt="Logo" class="h-8" />
 				</div>
 				<nav class="hidden md:block">
 					<ul class="flex space-x-4">
@@ -62,8 +74,13 @@
 		<main class="flex flex-col items-center">
 			<section id="hero-section">
 				<div id="hero-content" class="content">
-					<span id="hero-chip" class="hero-chip petroleo"
-						>Lorem ipsum dolor</span
+					<span id="hero-chip" class="hero-chip petroleo">
+						<img
+							src="./media/icon.svg"
+							alt="Icon"
+							class="inline h-8 w-8 mr-2"
+						/>
+						Lorem ipsum dolor</span
 					>
 					<h1 class="text-3xl font-medium mb-4">Lorem ipsum dolor</h1>
 					<p>
@@ -137,7 +154,7 @@
 						</p>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -166,7 +183,7 @@
 						>
 							Solicite um teste
 							<div
-								class="inline-flex w-8 h-8 bg-white rounded-full items-center justify-center ml-2"
+								class="inline-flex w-8 h-8 bg-white rounded-full items-center justify-center ml-2 ml-4"
 							>
 								<span
 									class="material-symbols-outlined text-shark-800"
@@ -177,7 +194,7 @@
 						</button>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -203,7 +220,7 @@
 						</p>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -229,7 +246,7 @@
 						</p>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -255,7 +272,7 @@
 						</p>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -281,7 +298,7 @@
 						</p>
 					</div>
 					<img
-						src="./images/solution1.png"
+						src="./media/images/placeholder.png"
 						alt="Sistema de verificação de válvulas"
 						class="solution-image"
 					/>
@@ -671,14 +688,22 @@
 
 		<footer>
 			<div class="content inverse py-4 md:py-8">
-				<img src="logo.png" alt="Logo" class="mb-10" />
+				<div class="flex justify-center-safe mb-20">
+					<img src="./media/logo-footer.svg" alt="Logo" />
+				</div>
 
 				<div
 					class="sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6"
 				>
 					<div class="footer-section">
-						<img src="./media/icon.png" alt="icon" />
-						<p>lorem ipsum dolor sit amet</p>
+						<img
+							src="./media/icon-footer.svg"
+							alt="icon"
+							class="w-20 h-20 mb-4 mx-auto md:mx-0"
+						/>
+						<p class="text-center sm:text-left">
+							lorem ipsum dolor sit amet
+						</p>
 					</div>
 
 					<div class="footer-section">
@@ -717,7 +742,11 @@
 					© 2025 ArkDev. Todos os direitos reservados. |
 					<a href="#">Política de Privacidade</a>
 				</p>
-				<img src="./media/footer-banner.png" alt="Always beyond" />
+				<img
+					src="./media/always-beyond.svg"
+					alt="Always beyond"
+					class="mt-20"
+				/>
 			</div>
 		</footer>
 	</body>
