@@ -170,14 +170,29 @@
 				</div>
 
 				<div
-					id="hero-masked-image"
+					id="hero-image-container"
 					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10"
-				></div>
-				<img
-					src="./media/mask.svg"
-					alt="Hero Mask"
-					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-20 hero-masked-image-mask"
-				/>
+				>
+					<div class="relative w-full pb-[56.25%] overflow-hidden">
+						<div
+							id="hero-masked-image"
+							class="absolute top-0 left-0 w-full h-full"
+						></div>
+					</div>
+				</div>
+
+				<!-- <div
+    			id="hero-image-container"
+    			class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10"
+  			>
+    			<div id="hero-masked-image" class="w-full h-full"></div>
+  			</div>
+
+  			<img
+    			src="./media/mask.svg"
+    			alt="Hero Mask"
+    			class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-20 hero-masked-image-mask"
+  			/> -->
 			</section>
 
 			<section id="partners-section" class="bg-shark-50">

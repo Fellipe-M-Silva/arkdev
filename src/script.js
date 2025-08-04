@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const mobileMenu = document.getElementById("menu-mobile");
 
 	if (menuOverlay && mobileMenu) {
-		// Adiciona o estado inicial do menu para a animação
 		menuOverlay.classList.add("hidden-mobile-menu");
 		mobileMenu.classList.add("slide-out-mobile");
 	}
@@ -54,11 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			if (targetElement) {
 				window.scrollTo({
-					top: targetElement.offsetTop - 72, // Ajusta para a altura do header fixo
+					top: targetElement.offsetTop - 72,
 					behavior: "smooth",
 				});
 
-				// Se o menu mobile estiver aberto, feche-o
 				if (
 					menuOverlay &&
 					!menuOverlay.classList.contains("hidden-mobile-menu")
@@ -78,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	let autoSlideInterval;
 	const imageSources = [
 		"./media/images/placeholder.png",
-		"./media/images/placeholder.png", // URLs de imagens corrigidas
+		"./media/images/placeholder.png",
 		"./media/images/placeholder.png",
 	];
 
@@ -91,6 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (heroMaskedImage) {
 			heroMaskedImage.style.backgroundImage = `url('${imageSources[index]}')`;
+			heroMaskedImage.style.backgroundSize = "cover";
+			heroMaskedImage.style.backgroundPosition = "center";
+			heroMaskedImage.style.backgroundRepeat = "no-repeat";
 		}
 	};
 
