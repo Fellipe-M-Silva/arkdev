@@ -84,63 +84,28 @@
 }
 
 .menu-overlay {
-	@apply transition-opacity duration-300;
+	@apply transition-opacity duration-300 ease-in-out;
 }
 
 #menu-mobile {
-	@apply transition-transform duration-300;
+	@apply transition-transform duration-300 ease-in-out;
 }
 
-.fade-in {
-	animation: fade-in 0.3s forwards;
+/* Lógica de visibilidade para o menu mobile com Tailwind */
+.hidden-mobile-menu {
+	@apply opacity-0 pointer-events-none;
 }
 
-@keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+.open-mobile-menu {
+	@apply opacity-100;
 }
 
-.fade-out {
-	animation: fade-out 0.3s forwards;
+.slide-out-mobile {
+	@apply -translate-x-full;
 }
 
-@keyframes fade-out {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-}
-
-.slide-in {
-	animation: slide-in 0.3s forwards;
-}
-
-@keyframes slide-in {
-	from {
-		transform: translateX(-100%);
-	}
-	to {
-		transform: translateX(0);
-	}
-}
-
-.slide-out {
-	animation: slide-out 0.3s forwards;
-}
-
-@keyframes slide-out {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		transform: translateX(-100%);
-	}
+.slide-in-mobile {
+	@apply translate-x-0;
 }
 
 .animated-hide {
@@ -186,19 +151,19 @@ section {
 .hero-chip.motores {
 	@apply bg-puerto-rico-50 text-puerto-rico-950;
 }
-#hero-content {
+.hero-content {
 	@apply flex flex-col items-center justify-start pt-10 sm:pt-20 md:w-1/2 lg:w-3/5 h-full text-center;
 }
 @media screen and (min-width: 1440px) {
-	#hero-content {
+	.hero-content {
 		@apply justify-center pt-0;
 	}
 }
 #caroussel-tabs ul {
-	@apply flex flex-row space-x-0.5 border-t border-t-shark-300 bg-white/90 backdrop-blur-xs;
+	@apply flex flex-row font-sm space-x-0.5 border-t border-t-shark-300 bg-white/90 backdrop-blur-xs;
 }
 #caroussel-tabs ul li {
-	@apply flex-1 p-1 md:p-4 pt-5 pb-6 border-t-4 border-t-transparent cursor-pointer text-center transition duration-200 md:text-lg;
+	@apply flex-1 p-1 md:p-4 pt-5 pb-6 border-t-4 border-t-transparent cursor-pointer text-center transition duration-200 text-sm md:text-lg;
 }
 #caroussel-tabs ul li:hover {
 	@apply bg-shark-50 text-shark-950 font-semibold;
@@ -212,18 +177,55 @@ section {
 #caroussel-tabs ul li#tab-3.active {
 	@apply border-t-puerto-rico-600 text-shark-950 font-semibold;
 }
-.hero-masked-image {
-	mask-image: url("../media/mask.svg");
-	-webkit-mask-image: url("../media/mask.svg");
+#hero-masked-image {
+	/* Define o caminho para a imagem como um background */
+	background-image: url("./media/images/placeholder.png"); /* Mude para sua imagem real */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	/* Aplica a máscara */
+	mask-image: url("./media/mask.svg");
+	-webkit-mask-image: url("./media/mask.svg");
 
 	mask-position: center;
 	-webkit-mask-position: center;
-
 	mask-size: contain;
 	-webkit-mask-size: contain;
 	mask-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
+
+	/* Garante que o elemento seja visível e tenha o tamanho correto */
+	@apply block w-full max-w-[800px] h-auto;
 }
+
+.hero-slide {
+	@apply hidden transition-opacity duration-500 ease-in-out absolute w-full h-full;
+}
+
+.hero-slide.active {
+	@apply flex opacity-100 flex-col justify-center items-center;
+}
+
+.hero-slide:not(.active) {
+	@apply opacity-0;
+}
+.hero-slide span {
+	@apply mx-auto mb-10;
+}
+/* .hero-slide {
+	@apply hidden;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.hero-slide.active {
+	@apply block;
+	opacity: 1;
+}
+
+.hero-slide:not(.active) {
+	opacity: 0;
+} */
 
 /* Seção de soluções */
 .chip {

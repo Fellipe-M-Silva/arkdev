@@ -73,7 +73,7 @@
 		</header>
 		<div
 			id="menu-overlay"
-			class="menu-overlay bg-black/40 w-full h-screen sticky top-0 z-50 hidden"
+			class="menu-overlay bg-black/40 w-full h-screen fixed top-0 z-50"
 		>
 			<nav
 				id="menu-mobile"
@@ -95,51 +95,89 @@
 		</div>
 
 		<main class="flex flex-col items-center">
-			<section id="hero-section" class="relative">
-				<div id="hero-content" class="content">
-					<span id="hero-chip" class="hero-chip petroleo">
-						<img
-							src="./media/icon.svg"
-							alt="Icon"
-							class="inline h-8 w-8 mr-2"
-						/>
-						Lorem ipsum dolor</span
-					>
-					<h1 class="text-3xl font-medium bg-white px-4">
-						Lorem ipsum dolor
-					</h1>
-					<p class="bg-white p-4">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Duis volutpat quis odio eget efficitur! Use this link
-						and fusce mollis felis non pharetra feugiat
-					</p>
-					<div class="flex flex-col md:flex-row gap-4 mt-6">
-						<button class="cta-primary">
-							Confira as nossas soluções
-						</button>
-						<button class="cta-secondary">Entre em contato</button>
+			<section id="hero-section" class="relative overflow-hidden">
+				<div class="content flex flex-col justify-between h-full">
+					<div id="hero-slides-container" class="relative flex-1">
+						<div id="hero-slide-1" class="hero-slide active">
+							<span class="category-chip category-chip-petroleo">
+								Petróleo e Gás
+							</span>
+							<h1 class="text-3xl font-medium bg-white px-4">
+								Título da Tab 1
+							</h1>
+							<p class="bg-white p-4">Parágrafo da Tab 1.</p>
+							<div
+								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
+							>
+								<button class="cta-primary">
+									Botão 1 Tab 1
+								</button>
+								<button class="cta-secondary">
+									Botão 2 Tab 1
+								</button>
+							</div>
+						</div>
+
+						<div id="hero-slide-2" class="hero-slide">
+							<span
+								class="category-chip category-chip-ciberseguranca"
+							>
+								Cibersegurança
+							</span>
+							<h1 class="text-3xl font-medium bg-white px-4">
+								Título da Tab 2
+							</h1>
+							<p class="bg-white p-4">Parágrafo da Tab 2.</p>
+							<div
+								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
+							>
+								<button class="cta-primary">
+									Botão 1 Tab 2
+								</button>
+								<button class="cta-secondary">
+									Botão 2 Tab 2
+								</button>
+							</div>
+						</div>
+
+						<div id="hero-slide-3" class="hero-slide">
+							<span class="category-chip category-chip-motores">
+								Motores a diesel
+							</span>
+							<h1 class="text-3xl font-medium bg-white px-4">
+								Título da Tab 3
+							</h1>
+							<p class="bg-white p-4">Parágrafo da Tab 3.</p>
+							<div
+								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
+							>
+								<button class="cta-primary">
+									Botão 1 Tab 3
+								</button>
+								<button class="cta-secondary">
+									Botão 2 Tab 3
+								</button>
+							</div>
+						</div>
+					</div>
+					<div id="caroussel-tabs" class="content">
+						<ul>
+							<li id="tab-1" class="active">Petróleo e Gás</li>
+							<li id="tab-2">Cibersegurança</li>
+							<li id="tab-3">Motores a diesel</li>
+						</ul>
 					</div>
 				</div>
 
-				<div id="caroussel-tabs" class="content">
-					<ul>
-						<li id="tab-1" class="active">Petróleo e Gás</li>
-						<li id="tab-2">Cibersegurança</li>
-						<li id="tab-3">Motores a diesel</li>
-					</ul>
-				</div>
-
+				<div
+					id="hero-masked-image"
+					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10"
+				></div>
 				<img
-					src="./media/images/placeholder.png"
-					alt="Sua imagem hero"
-					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10 hero-masked-image"
-				/>
-
-				<!-- <img
 					src="./media/mask.svg"
-					alt="Hero Image"
-					class="absolute bottom-16 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-auto -z-10"
-				/> -->
+					alt="Hero Mask"
+					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-20 hero-masked-image-mask"
+				/>
 			</section>
 
 			<section id="partners-section" class="bg-shark-50">
