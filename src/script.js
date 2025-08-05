@@ -237,7 +237,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 	];
 
 	const showSlide = (index) => {
-		heroSlides.forEach((slide) => slide.classList.remove("active"));
+		heroSlides.forEach((slide) => {
+			slide.classList.remove("active");
+			// Remova a visibilidade do slide, mas mantenha-o no DOM para interação
+		});
 		heroTabs.forEach((tab) => tab.classList.remove("active"));
 
 		heroSlides[index].classList.add("active");
@@ -251,10 +254,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 		}
 
 		if (heroProgressBar) {
-			// Remove a animação de transição para resetar a barra instantaneamente
 			heroProgressBar.style.transitionDuration = "0s";
 			heroProgressBar.style.width = "0%";
-			// Remove a classe de cor anterior
+
 			const currentProgressBarColor = progressBarColors.find(
 				(colorClass) => heroProgressBar.classList.contains(colorClass)
 			);
@@ -264,12 +266,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 			heroProgressBar.classList.add(progressBarColors[index]);
 
 			setTimeout(() => {
-				// Adiciona a transição e inicia a animação de preenchimento
 				heroProgressBar.style.transitionDuration = `${
 					slideDuration / 1000
 				}s`;
 				heroProgressBar.style.width = "100%";
-			}, 20); // 20ms é o suficiente para forçar a renderização
+			}, 20);
 		}
 	};
 

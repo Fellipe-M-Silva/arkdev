@@ -105,10 +105,11 @@ section {
 	@apply mr-auto;
 }
 .header-logo-image {
-	@apply h-8 text-shark-900 dark:text-white;
+	@apply h-10 text-shark-900 dark:text-white;
 }
+
 .main-nav {
-	@apply hidden md:block;
+	@apply hidden lg:block;
 }
 .main-nav-list {
 	@apply flex space-x-4;
@@ -121,7 +122,7 @@ section {
 	@apply relative; /* Adiciona posicionamento relativo para o modal */
 }
 #open-menu {
-	@apply md:hidden;
+	@apply lg:hidden;
 }
 .mobile-nav-title {
 	@apply mb-10;
@@ -152,7 +153,7 @@ section {
 
 /* --- Modal de Idioma (Dropdown) --- */
 .language-modal-overlay {
-	@apply absolute top-full right-0 mt-2 z-50 flex flex-col items-end justify-start transition-opacity duration-300;
+	@apply absolute top-full right-10 md:right-0 mt-2 z-50 flex flex-col items-end justify-start transition-opacity duration-300;
 	@apply opacity-0 pointer-events-none; /* Estado inicial (oculto) */
 }
 .language-modal-overlay.active {
@@ -196,12 +197,29 @@ section {
 .hero-slides-container {
 	@apply relative flex-1;
 }
-.hero-slide {
+/* .hero-slide {
 	@apply hidden transition-opacity duration-500 ease-in-out absolute w-full h-full;
 }
 .hero-slide.active {
 	@apply flex opacity-100 flex-col justify-center items-center;
+} */
+.hero-slide {
+  /* Use posicionamento absoluto para que os slides se sobreponham */
+  @apply absolute top-0 left-0 w-full h-full opacity-0 transition-opacity duration-500 ease-in-out;
+  pointer-events: none; /* Impede a interação com slides inativos */
+  z-index: 10; /* Garante que os slides estejam acima da imagem de fundo */
 }
+.hero-slide.active {
+  @apply opacity-100;
+  pointer-events: auto; /* Permite a interação no slide ativo */
+  z-index: 20; /* Garante que o slide ativo fique no topo */
+}
+.hero-content {
+  @apply flex flex-col items-center justify-center h-full text-center;
+}
+/* .hero-content {
+	@apply h-full;
+} */
 .hero-slide:not(.active) {
 	@apply opacity-0;
 }
@@ -409,6 +427,9 @@ footer {
 .footer-logo-container {
 	@apply flex justify-center mb-20;
 }
+.footer-logo {
+	@apply h-10 text-white;
+}
 .footer-grid {
 	@apply sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-6;
 }
@@ -535,6 +556,8 @@ p {
 .theme-icon-animation.shrink {
 	transform: scale(0);
 }
+
+@import "./cybersecurity.css";
 
 @tailwind base;
 @tailwind components;

@@ -120,6 +120,43 @@ app.get("/", (req, res) => {
 	}
 });
 
+// Rota para a página de cybersecurity
+app.get("/cybersecurity", (req, res) => {
+	const userLang = req.cookies.language || "pt-br";
+	const htmlFilePath = path.join(staticPath, "cybersecurity.html");
+
+	if (fs.existsSync(htmlFilePath)) {
+		const htmlContent = fs.readFileSync(htmlFilePath, "utf8");
+		const langFilePath = path.join(localesPath, `${userLang}.json`);
+
+		if (fs.existsSync(langFilePath)) {
+			try {
+				const translations = JSON.parse(
+					fs.readFileSync(langFilePath, "utf8")
+				);
+				const translatedHtml = injectTranslations(
+					htmlContent,
+					translations
+				);
+				res.send(translatedHtml);
+			} catch (error) {
+				console.error(
+					`[i18n] Erro ao analisar o arquivo JSON: ${langFilePath}`,
+					error
+				);
+				res.status(500).send("Internal Server Error");
+			}
+		} else {
+			console.warn(
+				`[i18n] Arquivo de tradução não encontrado para ${userLang}. Enviando HTML original.`
+			);
+			res.sendFile(htmlFilePath);
+		}
+	} else {
+		res.status(404).send("HTML file not found");
+	}
+});
+
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
