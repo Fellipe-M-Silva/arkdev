@@ -209,19 +209,15 @@ section {
 .hero-slide span {
 	@apply mx-auto mb-10;
 }
-/* .hero-slide {
-	@apply hidden;
-	transition: opacity 0.5s ease-in-out;
+.slider-petroleo {
+  @apply bg-carmine-600;
 }
-
-.hero-slide.active {
-	@apply block;
-	opacity: 1;
+.slider-ciberseguranca {
+  @apply bg-azure-radiance-600;
 }
-
-.hero-slide:not(.active) {
-	opacity: 0;
-} */
+.slider-motores {
+  @apply bg-puerto-rico-600;
+}
 
 /* Seção de soluções */
 .chip {

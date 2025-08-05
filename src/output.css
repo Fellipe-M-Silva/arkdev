@@ -924,6 +924,15 @@ section {
   margin-inline: auto;
   margin-bottom: calc(var(--spacing) * 10);
 }
+.slider-petroleo {
+  background-color: var(--color-carmine-600);
+}
+.slider-ciberseguranca {
+  background-color: var(--color-azure-radiance-600);
+}
+.slider-motores {
+  background-color: var(--color-puerto-rico-600);
+}
 .chip {
   font-family: "Roboto Mono", monospace;
   text-transform: uppercase;
