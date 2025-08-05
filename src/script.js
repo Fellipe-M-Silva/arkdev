@@ -1,5 +1,144 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// === Lógica do Menu Mobile ===
+	// === Dicionário de Conteúdo de Idiomas (será carregado dinamicamente) ===
+	let languageContent = {};
+
+	// Função para carregar as traduções do servidor
+	const fetchTranslations = async (lang) => {
+		try {
+			const response = await fetch(`/api/translations/${lang}`);
+			if (!response.ok) {
+				throw new Error(`Failed to fetch translations for ${lang}`);
+			}
+			return await response.json();
+		} catch (error) {
+			console.error(error);
+			return {};
+		}
+	};
+
+	// Função para atualizar o conteúdo da página com o idioma selecionado
+	const updateContent = async (lang) => {
+		// Carrega o arquivo de tradução do servidor se ainda não foi feito
+		if (!languageContent[lang]) {
+			languageContent[lang] = await fetchTranslations(lang);
+		}
+
+		// Atualiza todos os elementos com o atributo data-i18n
+		const elementsToTranslate = document.querySelectorAll("[data-i18n]");
+		elementsToTranslate.forEach((element) => {
+			const key = element.getAttribute("data-i18n");
+			if (languageContent[lang] && languageContent[lang][key]) {
+				element.textContent = languageContent[lang][key];
+			}
+		});
+
+		// Atualiza os placeholders dos campos de formulário
+		const placeholderElements = document.querySelectorAll(
+			"[data-i18n-placeholder]"
+		);
+		placeholderElements.forEach((element) => {
+			const key = element.getAttribute("data-i18n-placeholder");
+			if (languageContent[lang] && languageContent[lang][key]) {
+				element.placeholder = languageContent[lang][key];
+			}
+		});
+
+		// Atualiza o atributo alt da imagem com base no idioma
+		const imgElement = document.querySelector(".header-logo-image");
+		if (
+			imgElement &&
+			languageContent[lang] &&
+			languageContent[lang]["app_description"]
+		) {
+			imgElement.setAttribute(
+				"alt",
+				languageContent[lang]["app_description"]
+			);
+		}
+
+		// Atualiza o título da página
+		const titleElement = document.querySelector("title");
+		if (
+			titleElement &&
+			languageContent[lang] &&
+			languageContent[lang]["app_title"]
+		) {
+			titleElement.textContent = languageContent[lang]["app_title"];
+		}
+
+		// Atualiza as opções do select
+		const howMetOptions = document.querySelectorAll("#how-met option");
+		howMetOptions.forEach((option) => {
+			const key = `form_option_${
+				option.value.toLowerCase() || "placeholder"
+			}`;
+			if (languageContent[lang] && languageContent[lang][key]) {
+				option.textContent = languageContent[lang][key];
+			}
+		});
+
+		const currentLangElements =
+			document.querySelectorAll(".language-option");
+		currentLangElements.forEach((el) => {
+			el.classList.remove("active");
+			if (el.dataset.lang === lang) {
+				el.classList.add("active");
+			}
+		});
+	};
+
+	// Carrega o idioma inicial e atualiza o conteúdo da página
+	const getInitialLanguage = async () => {
+		const savedLang = localStorage.getItem("language") || "pt";
+		languageContent[savedLang] = await fetchTranslations(savedLang);
+		await updateContent(savedLang);
+		return savedLang;
+	};
+
+	let currentLanguage = getInitialLanguage();
+
+	// === Lógica do Modal de Idioma ===
+	const languageToggleButton = document.getElementById(
+		"language-toggle-button"
+	);
+	const languageModal = document.getElementById("language-modal");
+	const languageOptions = document.querySelectorAll(".language-option");
+
+	const openLanguageModal = () => {
+		languageModal.classList.add("active");
+	};
+
+	const closeLanguageModal = () => {
+		languageModal.classList.remove("active");
+	};
+
+	const setLanguage = async (lang) => {
+		await fetch(`/api/set-language/${lang}`, { method: "POST" });
+		currentLanguage = lang;
+		await updateContent(currentLanguage);
+		localStorage.setItem("language", currentLanguage);
+		closeLanguageModal();
+	};
+
+	if (languageToggleButton) {
+		languageToggleButton.addEventListener("click", openLanguageModal);
+	}
+
+	if (languageModal) {
+		// Fecha o modal ao clicar fora dele
+		languageModal.addEventListener("click", (e) => {
+			if (e.target === languageModal) {
+				closeLanguageModal();
+			}
+		});
+	}
+
+	languageOptions.forEach((option) => {
+		option.addEventListener("click", () => {
+			setLanguage(option.dataset.lang);
+		});
+	}); // === Lógica do Menu Mobile ===
+
 	const openMenuButton = document.getElementById("open-menu");
 	const closeMenuButton = document.getElementById("close-menu");
 	const menuOverlay = document.getElementById("menu-overlay");

@@ -151,37 +151,30 @@ section {
 
 /* --- Modal de Idioma --- */
 .language-modal-overlay {
-	/* Define o overlay como uma tela cheia, inicialmente oculta */
-	@apply fixed top-0 left-0 w-full h-screen bg-black/40 z-50 flex items-center justify-center transition-opacity duration-300;
+	@apply absolute top-20 right-4 md:right-8 z-50 flex items-start justify-end transition-opacity duration-300;
 	@apply opacity-0 pointer-events-none; /* Estado inicial (oculto) */
 }
 .language-modal-overlay.active {
-	/* Estado ativo para mostrar o overlay */
-	@apply opacity-100 pointer-events-auto;
+	@apply opacity-100 pointer-events-auto; /* Estado ativo (visível) */
 }
 .language-modal {
-	/* Estilização do modal em si, com transição de escala */
-	@apply bg-white dark:bg-shark-950 rounded-2xl p-6 shadow-lg transform transition-transform duration-300 scale-95;
+	@apply bg-white dark:bg-shark-950 rounded-2xl p-4 border border-shark-200 dark:border-shark-700 transform transition-transform duration-300 scale-95;
+	min-width: 200px; /* Largura mínima para o modal */
 }
 .language-modal-overlay.active .language-modal {
-	/* Animação para o modal quando está ativo */
 	@apply scale-100;
 }
 .language-modal-title {
-	/* Título do modal */
-	@apply text-xl font-semibold mb-4;
+	@apply text-lg font-semibold mb-6;
 }
 .language-option {
-	/* Estilo para os botões de seleção de idioma */
-	@apply flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-shark-100 dark:hover:bg-shark-800 transition-colors cursor-pointer;
+	@apply flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-shark-100 dark:hover:bg-shark-800 transition-colors cursor-pointer w-full;
 }
 .language-flag {
-	/* Estilo para as imagens das bandeiras */
 	@apply w-8 h-6 rounded-md object-cover;
 }
 .language-option.active {
-	/* Estilo para a opção de idioma selecionada */
-	@apply bg-shark-200 dark:bg-shark-700;
+	@apply bg-shark-100 dark:bg-shark-800;
 }
 
 /* --- Seção Hero --- */
