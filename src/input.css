@@ -159,26 +159,25 @@ section {
 		@apply justify-center pt-0;
 	}
 }
-#caroussel-tabs ul {
-	@apply flex flex-row text-sm space-x-0.5 border-t border-t-shark-300 bg-white/90 backdrop-blur-xs;
+#caroussel-tabs-list {
+	@apply flex flex-row text-sm bg-white/90 backdrop-blur-xs;
 }
-#caroussel-tabs ul li {
+#caroussel-tabs-list li {
 	@apply flex-1 p-1 md:p-4 pt-5 pb-6 border-t-4 border-t-transparent cursor-pointer text-center transition duration-200 text-sm md:text-lg;
 }
-#caroussel-tabs ul li:hover {
+#caroussel-tabs-list li:hover {
 	@apply bg-shark-50 text-shark-950 font-semibold;
 }
-#caroussel-tabs ul li#tab-1.active {
+#caroussel-tabs-list li#tab-1.active {
 	@apply border-t-carmine-600 text-shark-950 font-semibold;
 }
-#caroussel-tabs ul li#tab-2.active {
+#caroussel-tabs-list li#tab-2.active {
 	@apply border-t-azure-radiance-600 text-shark-950 font-semibold;
 }
-#caroussel-tabs ul li#tab-3.active {
+#caroussel-tabs-list li#tab-3.active {
 	@apply border-t-puerto-rico-600 text-shark-950 font-semibold;
 }
 #hero-image-container {
-	/* Aplica a máscara ao contêiner pai */
 	mask-image: url("./media/mask.svg");
 	-webkit-mask-image: url("./media/mask.svg");
 
@@ -189,8 +188,6 @@ section {
 	mask-repeat: no-repeat;
 	-webkit-mask-repeat: no-repeat;
 }
-
-/* O div interno terá a imagem de fundo */
 #hero-masked-image {
 	@apply block w-full h-full;
 }
@@ -209,14 +206,24 @@ section {
 .hero-slide span {
 	@apply mx-auto mb-10;
 }
-.slider-petroleo {
-  @apply bg-carmine-600;
+
+.hero-progress-bar-container {
+	@apply h-0.5 w-full bg-transparent overflow-hidden;
 }
-.slider-ciberseguranca {
-  @apply bg-azure-radiance-600;
+.progress-fill {
+	@apply h-full w-0;
+	transition: width linear;
 }
-.slider-motores {
-  @apply bg-puerto-rico-600;
+.progress-fill-petroleo {
+	@apply bg-carmine-600;
+}
+
+.progress-fill-ciberseguranca {
+	@apply bg-azure-radiance-600;
+}
+
+.progress-fill-motores {
+	@apply bg-puerto-rico-600;
 }
 
 /* Seção de soluções */

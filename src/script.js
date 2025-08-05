@@ -66,16 +66,75 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	// === Lógica do Carrossel do Hero ===
+	// const heroTabs = document.querySelectorAll("#caroussel-tabs ul li");
+	// const heroSlides = document.querySelectorAll(".hero-slide");
+	// const heroMaskedImage = document.getElementById("hero-masked-image");
+
+	// let currentSlide = 0;
+	// let autoSlideInterval;
+	// const imageSources = [
+	// 	"./media/images/placeholder.png",
+	// 	"./media/images/placeholder.png",
+	// 	"./media/images/placeholder.png",
+	// ];
+
+	// const showSlide = (index) => {
+	// 	heroSlides.forEach((slide) => slide.classList.remove("active"));
+	// 	heroTabs.forEach((tab) => tab.classList.remove("active"));
+
+	// 	heroSlides[index].classList.add("active");
+	// 	heroTabs[index].classList.add("active");
+
+	// 	if (heroMaskedImage) {
+	// 		heroMaskedImage.style.backgroundImage = `url('${imageSources[index]}')`;
+	// 		heroMaskedImage.style.backgroundSize = "cover";
+	// 		heroMaskedImage.style.backgroundPosition = "center";
+	// 		heroMaskedImage.style.backgroundRepeat = "no-repeat";
+	// 	}
+	// };
+
+	// const nextSlide = () => {
+	// 	currentSlide = (currentSlide + 1) % heroSlides.length;
+	// 	showSlide(currentSlide);
+	// };
+
+	// const startAutoSlide = () => {
+	// 	clearInterval(autoSlideInterval);
+	// 	autoSlideInterval = setInterval(nextSlide, 15000);
+	// };
+
+	// heroTabs.forEach((tab, index) => {
+	// 	tab.addEventListener("click", () => {
+	// 		currentSlide = index;
+	// 		showSlide(currentSlide);
+	// 		startAutoSlide();
+	// 	});
+	// });
+
+	// if (heroSlides.length > 0) {
+	// 	showSlide(currentSlide);
+	// 	startAutoSlide();
+	// }
+
+	// === Lógica do Carrossel do Hero (versão revisada) ===
 	const heroTabs = document.querySelectorAll("#caroussel-tabs ul li");
 	const heroSlides = document.querySelectorAll(".hero-slide");
 	const heroMaskedImage = document.getElementById("hero-masked-image");
+	const heroProgressBar = document.getElementById("hero-progress-bar");
 
 	let currentSlide = 0;
 	let autoSlideInterval;
+	const slideDuration = 15000;
 	const imageSources = [
 		"./media/images/placeholder.png",
 		"./media/images/placeholder.png",
 		"./media/images/placeholder.png",
+	];
+
+	const progressBarColors = [
+		"progress-fill-petroleo",
+		"progress-fill-ciberseguranca",
+		"progress-fill-motores",
 	];
 
 	const showSlide = (index) => {
@@ -91,6 +150,25 @@ document.addEventListener("DOMContentLoaded", () => {
 			heroMaskedImage.style.backgroundPosition = "center";
 			heroMaskedImage.style.backgroundRepeat = "no-repeat";
 		}
+
+		if (heroProgressBar) {
+			// 1. Remove a animação de transição para resetar a barra instantaneamente
+			heroProgressBar.style.transitionDuration = "0s";
+			heroProgressBar.style.width = "0%";
+
+			// Remove todas as classes de cor anteriores e adiciona a nova
+			heroProgressBar.classList.remove(...progressBarColors);
+			heroProgressBar.classList.add(progressBarColors[index]);
+
+			// 2. Aguarda um momento para que o navegador renderize o reset da barra
+			setTimeout(() => {
+				// 3. Adiciona a transição e inicia a animação de preenchimento
+				heroProgressBar.style.transitionDuration = `${
+					slideDuration / 1000
+				}s`;
+				heroProgressBar.style.width = "100%";
+			}, 20); // 20ms é o suficiente para forçar a renderização
+		}
 	};
 
 	const nextSlide = () => {
@@ -100,14 +178,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const startAutoSlide = () => {
 		clearInterval(autoSlideInterval);
-		autoSlideInterval = setInterval(nextSlide, 15000);
+		autoSlideInterval = setInterval(nextSlide, slideDuration);
 	};
 
 	heroTabs.forEach((tab, index) => {
 		tab.addEventListener("click", () => {
 			currentSlide = index;
 			showSlide(currentSlide);
-			startAutoSlide();
+			startAutoSlide(); // O temporizador é reiniciado ao clicar
 		});
 	});
 

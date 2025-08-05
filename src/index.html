@@ -106,10 +106,10 @@
 							<span class="category-chip category-chip-petroleo">
 								Petróleo e Gás
 							</span>
-							<h1 class="text-3xl font-medium bg-white px-4">
+							<h1 class="rounded-b-lg font-medium bg-white/90 backdrop-blur-xs p-4">
 								Título da Tab 1
 							</h1>
-							<p class="bg-white p-4">Parágrafo da Tab 1.</p>
+							<p class="text-lg p-4 pt-0 rounded-b-lg bg-white/90 backdrop-blur-xs">Parágrafo da Tab 1.</p>
 							<div
 								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
 							>
@@ -128,10 +128,10 @@
 							>
 								Cibersegurança
 							</span>
-							<h1 class="text-3xl font-medium bg-white px-4">
+							<h1 class="rounded-b-lg font-medium bg-white/90 backdrop-blur-xs p-4">
 								Título da Tab 2
 							</h1>
-							<p class="bg-white p-4">Parágrafo da Tab 2.</p>
+							<p class="text-lg p-4 pt-0 rounded-b-lg bg-white/90 backdrop-blur-xs">Parágrafo da Tab 2.</p>
 							<div
 								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
 							>
@@ -148,10 +148,10 @@
 							<span class="category-chip category-chip-motores">
 								Motores a diesel
 							</span>
-							<h1 class="text-3xl font-medium bg-white px-4">
+							<h1 class="rounded-b-lg font-medium bg-white/90 backdrop-blur-xs p-4">
 								Título da Tab 3
 							</h1>
-							<p class="bg-white p-4">Parágrafo da Tab 3.</p>
+							<p class="text-lg p-4 pt-0 rounded-b-lg bg-white/90 backdrop-blur-xs">Parágrafo da Tab 3.</p>
 							<div
 								class="flex flex-col md:flex-row md:justify-center gap-4 mt-6"
 							>
@@ -166,14 +166,22 @@
 					</div>
 
 					<div id="caroussel-tabs" class="content">
-						<ul>
+						<div class="hero-progress-bar-container">
+							<div
+								id="hero-progress-bar"
+								class="progress-fill"
+							></div>
+						</div>
+						<ul
+							id="caroussel-tabs-list"
+							class="flex flex-row justify-center"
+						>
 							<li id="tab-1" class="active">Petróleo e Gás</li>
 							<li id="tab-2">Cibersegurança</li>
 							<li id="tab-3">Motores a diesel</li>
 						</ul>
 					</div>
-				</div>
-
+					
 				<div
 					id="hero-image-container"
 					class="absolute bottom-9 sm:bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-auto -z-10"
