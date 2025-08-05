@@ -6,7 +6,7 @@ const fs = require("fs");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configura o caminho absoluto para a pasta de arquivos estáticos (a pasta src)
+// Define o caminho absoluto para a pasta de arquivos estáticos (a pasta src)
 const staticPath = path.join(__dirname);
 app.use(express.static(staticPath));
 
@@ -18,15 +18,14 @@ app.use(cookieParser());
 
 // Função para injetar traduções no HTML
 const injectTranslations = (htmlContent, translations) => {
-	// Percorre todas as chaves de tradução
+	// Percorre todas as chaves de tradução e substitui o texto estático
 	let translatedHtml = htmlContent;
 	for (const key in translations) {
 		if (translations.hasOwnProperty(key)) {
-			// Cria uma expressão regular para substituir o atributo data-i18n
-			const regex = new RegExp(`data-i18n="${key}"`, "g");
+			const regex = new RegExp(`data-i18n="${key}"[^>]*>[^<]*</`, "g");
 			translatedHtml = translatedHtml.replace(
 				regex,
-				`data-i18n="${key}">${translations[key]}`
+				`data-i18n="${key}">${translations[key]}</`
 			);
 		}
 	}
@@ -50,7 +49,11 @@ const injectTranslations = (htmlContent, translations) => {
 
 // Endpoint para carregar os arquivos de tradução
 app.get("/api/translations/:lang", (req, res) => {
-	const lang = req.params.lang;
+	let lang = req.params.lang;
+	// Corrige o nome do arquivo para 'pt-br.json' se o idioma for 'pt'
+	if (lang === "pt") {
+		lang = "pt-br";
+	}
 	const langFilePath = path.join(localesPath, `${lang}.json`);
 
 	console.log(

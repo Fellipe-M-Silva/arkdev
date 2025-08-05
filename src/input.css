@@ -118,6 +118,7 @@ section {
 }
 .header-buttons-container {
 	@apply flex flex-row gap-0.5 ml-4;
+	@apply relative; /* Adiciona posicionamento relativo para o modal */
 }
 #open-menu {
 	@apply md:hidden;
@@ -130,10 +131,10 @@ section {
 }
 .menu-overlay {
 	@apply bg-black/40 w-full h-screen fixed top-0 z-50 transition-opacity duration-300;
-	@apply opacity-0 pointer-events-none; /* Estado inicial (fechado) */
+	@apply opacity-0 pointer-events-none;
 }
 .menu-overlay.menu-overlay-active {
-	@apply opacity-100 pointer-events-auto; /* Estado ativo (aberto) */
+	@apply opacity-100 pointer-events-auto;
 }
 .mobile-nav {
 	@apply flex-1 max-w-xs bg-white dark:bg-shark-950 flex flex-col p-6 h-full transition-transform duration-300;
@@ -149,32 +150,33 @@ section {
 	@apply text-lg text-shark-800 dark:text-shark-100 focus:text-shark-950 dark:hover:text-white focus:font-semibold transition-colors duration-200 mb-6;
 }
 
-/* --- Modal de Idioma --- */
+/* --- Modal de Idioma (Dropdown) --- */
 .language-modal-overlay {
-	@apply absolute top-20 right-4 md:right-8 z-50 flex items-start justify-end transition-opacity duration-300;
+	@apply absolute top-full right-0 mt-4 z-50 flex flex-col items-end justify-start transition-opacity duration-300;
 	@apply opacity-0 pointer-events-none; /* Estado inicial (oculto) */
 }
 .language-modal-overlay.active {
 	@apply opacity-100 pointer-events-auto; /* Estado ativo (visível) */
 }
 .language-modal {
-	@apply bg-white dark:bg-shark-950 rounded-2xl p-4 border border-shark-200 dark:border-shark-700 transform transition-transform duration-300 scale-95;
-	min-width: 200px; /* Largura mínima para o modal */
+	@apply bg-white dark:bg-shark-950 rounded-2xl p-2 shadow-lg transform transition-transform duration-300 scale-95;
+	min-width: 240px; /* Largura mínima para o modal */
+	@apply origin-top-right; /* Altera a origem da transformação para o canto superior direito */
 }
 .language-modal-overlay.active .language-modal {
 	@apply scale-100;
 }
 .language-modal-title {
-	@apply text-lg font-semibold mb-6;
+	@apply text-xl font-semibold mb-4;
 }
 .language-option {
-	@apply flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-shark-100 dark:hover:bg-shark-800 transition-colors cursor-pointer w-full;
+	@apply flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-shark-50 dark:hover:bg-shark-800 w-full transition-colors cursor-pointer;
 }
 .language-flag {
 	@apply w-8 h-6 rounded-md object-cover;
 }
 .language-option.active {
-	@apply bg-shark-100 dark:bg-shark-800;
+	@apply bg-shark-200 dark:bg-shark-700;
 }
 
 /* --- Seção Hero --- */
