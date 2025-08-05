@@ -318,6 +318,10 @@ section {
 }
 .header-logo-image {
   height: calc(var(--spacing) * 8);
+  color: var(--color-shark-900);
+  &:where(.dark, .dark *) {
+    color: var(--color-white);
+  }
 }
 .main-nav {
   display: none;

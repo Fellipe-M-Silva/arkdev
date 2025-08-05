@@ -105,7 +105,7 @@ section {
 	@apply mr-auto;
 }
 .header-logo-image {
-	@apply h-8;
+	@apply h-8 text-shark-900 dark:text-white;
 }
 .main-nav {
 	@apply hidden md:block;
