@@ -18,14 +18,14 @@ app.use(cookieParser());
 
 // Função para injetar traduções no HTML
 const injectTranslations = (htmlContent, translations) => {
-	// Percorre todas as chaves de tradução e substitui o texto estático
+	// Percorre todas as chaves de tradução
 	let translatedHtml = htmlContent;
 	for (const key in translations) {
 		if (translations.hasOwnProperty(key)) {
-			const regex = new RegExp(`data-i18n="${key}"[^>]*>[^<]*</`, "g");
+			const regex = new RegExp(`data-i18n="${key}"`, "g");
 			translatedHtml = translatedHtml.replace(
 				regex,
-				`data-i18n="${key}">${translations[key]}</`
+				`data-i18n="${key}">${translations[key]}`
 			);
 		}
 	}
@@ -50,15 +50,10 @@ const injectTranslations = (htmlContent, translations) => {
 // Endpoint para carregar os arquivos de tradução
 app.get("/api/translations/:lang", (req, res) => {
 	let lang = req.params.lang;
-	// Corrige o nome do arquivo para 'pt-br.json' se o idioma for 'pt'
 	if (lang === "pt") {
 		lang = "pt-br";
 	}
 	const langFilePath = path.join(localesPath, `${lang}.json`);
-
-	console.log(
-		`[i18n] Tentando carregar o arquivo de tradução em: ${langFilePath}`
-	);
 
 	if (fs.existsSync(langFilePath)) {
 		try {
@@ -90,7 +85,7 @@ app.post("/api/set-language/:lang", (req, res) => {
 
 // Rota principal que envia o arquivo HTML com as traduções injetadas
 app.get("/", (req, res) => {
-	const userLang = req.cookies.language || "pt";
+	const userLang = req.cookies.language || "pt-br";
 	const htmlFilePath = path.join(staticPath, "index.html");
 
 	if (fs.existsSync(htmlFilePath)) {

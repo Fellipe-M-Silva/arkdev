@@ -4,7 +4,7 @@ const fs = require("fs");
 const i18n = {};
 
 i18n.translate = (req, res, next) => {
-	const userLang = req.cookies.language || "pt"; // Usa cookie ou 'pt' como padrão
+	const userLang = req.cookies.language || "pt-br"; // Usa cookie ou 'pt' como padrão
 	const langFilePath = path.join(__dirname, "locales", `${userLang}.json`);
 
 	// Verifica se o arquivo de idioma existe

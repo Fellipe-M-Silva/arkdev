@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+	// Torna a função assíncrona
 	// === Dicionário de Conteúdo de Idiomas (será carregado dinamicamente) ===
 	let languageContent = {};
 
@@ -95,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		return savedLang;
 	};
 
-	let currentLanguage = getInitialLanguage();
+	// Aguarda a resolução da promessa para garantir que currentLanguage seja uma string
+	let currentLanguage = await getInitialLanguage();
 
 	// === Lógica do Modal de Idioma ===
 	const languageToggleButton = document.getElementById(
@@ -458,11 +460,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		field.addEventListener("blur", () => {
 			validateField(field);
 		});
-	});
-
-	// Event listener para a máscara de telefone
-	telephoneInput.addEventListener("input", () => {
-		applyPhoneMask(telephoneInput);
 	});
 
 	// Event listener para a submissão do formulário
