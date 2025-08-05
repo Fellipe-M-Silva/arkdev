@@ -126,14 +126,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 		languageToggleButton.addEventListener("click", openLanguageModal);
 	}
 
-	if (languageModal) {
-		// Fecha o modal ao clicar fora dele
-		languageModal.addEventListener("click", (e) => {
-			if (e.target === languageModal) {
-				closeLanguageModal();
-			}
-		});
-	}
+	// Novo event listener para fechar o modal quando o usuário clica em qualquer lugar, exceto o modal
+	document.addEventListener("click", (e) => {
+		if (
+			languageModal.classList.contains("active") &&
+			!languageModal.contains(e.target) &&
+			!languageToggleButton.contains(e.target)
+		) {
+			closeLanguageModal();
+		}
+	});
 
 	languageOptions.forEach((option) => {
 		option.addEventListener("click", () => {
