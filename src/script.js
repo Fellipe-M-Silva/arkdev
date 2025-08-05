@@ -4,27 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
 	const closeMenuButton = document.getElementById("close-menu");
 	const menuOverlay = document.getElementById("menu-overlay");
 	const mobileMenu = document.getElementById("menu-mobile");
+	const body = document.body;
 
 	const openMenu = () => {
 		if (menuOverlay && mobileMenu) {
-			menuOverlay.classList.remove("opacity-0", "pointer-events-none");
-			menuOverlay.classList.add("opacity-100");
-			mobileMenu.classList.remove("translate-x-full");
-			mobileMenu.classList.add("translate-x-0");
-			document.body.style.overflow = "hidden";
+			menuOverlay.classList.add("menu-overlay-active");
+			mobileMenu.classList.add("mobile-nav-open");
+			body.style.overflow = "hidden";
 		}
 	};
 
 	const closeMenu = () => {
 		if (menuOverlay && mobileMenu) {
-			menuOverlay.classList.remove("opacity-100");
-			menuOverlay.classList.add("opacity-0", "pointer-events-none");
-			mobileMenu.classList.remove("translate-x-0");
-			mobileMenu.classList.add("translate-x-full");
+			menuOverlay.classList.remove("menu-overlay-active");
+			mobileMenu.classList.remove("mobile-nav-open");
 
-			setTimeout(() => {
-				document.body.style.overflow = "auto";
-			}, 300);
+			// Aguarda a transição de opacidade do overlay terminar para reativar a rolagem
+			menuOverlay.addEventListener(
+				"transitionend",
+				() => {
+					if (
+						!menuOverlay.classList.contains("menu-overlay-active")
+					) {
+						body.style.overflow = "auto";
+					}
+				},
+				{ once: true }
+			);
 		}
 	};
 
@@ -36,10 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				closeMenu();
 			}
 		});
-	}
+	} // === Lógica de Rolagem Suave e Fechamento do Menu === // Seleciona os links do menu principal e do menu mobile
 
-	// === Lógica de Rolagem Suave e Fechamento do Menu ===
-	// Seleciona os links do menu principal e do menu mobile
 	const allLinks = document.querySelectorAll("a[href^='#']");
 
 	allLinks.forEach((link) => {
@@ -52,20 +56,18 @@ document.addEventListener("DOMContentLoaded", () => {
 				window.scrollTo({
 					top: targetElement.offsetTop - 72,
 					behavior: "smooth",
-				});
+				}); // Verifica se o menu mobile está aberto e o fecha
 
-				// Verifica se o menu mobile está aberto e o fecha
 				if (
 					mobileMenu &&
-					!mobileMenu.classList.contains("translate-x-full")
+					mobileMenu.classList.contains("mobile-nav-open")
 				) {
 					closeMenu();
 				}
 			}
 		});
-	});
+	}); // === Lógica do Carrossel do Hero ===
 
-	// === Lógica do Carrossel do Hero ===
 	const heroTabs = document.querySelectorAll("#caroussel-tabs ul li");
 	const heroSlides = document.querySelectorAll(".hero-slide");
 	const heroMaskedImage = document.getElementById("hero-masked-image");
@@ -101,17 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		if (heroProgressBar) {
-			// 1. Remove a animação de transição para resetar a barra instantaneamente
+			// Remove a animação de transição para resetar a barra instantaneamente
 			heroProgressBar.style.transitionDuration = "0s";
 			heroProgressBar.style.width = "0%";
-
-			// Remove todas as classes de cor anteriores e adiciona a nova
-			heroProgressBar.classList.remove(...progressBarColors);
+			// Remove a classe de cor anterior
+			const currentProgressBarColor = progressBarColors.find(
+				(colorClass) => heroProgressBar.classList.contains(colorClass)
+			);
+			if (currentProgressBarColor) {
+				heroProgressBar.classList.remove(currentProgressBarColor);
+			}
 			heroProgressBar.classList.add(progressBarColors[index]);
 
-			// 2. Aguarda um momento para que o navegador renderize o reset da barra
 			setTimeout(() => {
-				// 3. Adiciona a transição e inicia a animação de preenchimento
+				// Adiciona a transição e inicia a animação de preenchimento
 				heroProgressBar.style.transitionDuration = `${
 					slideDuration / 1000
 				}s`;
@@ -141,10 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (heroSlides.length > 0) {
 		showSlide(currentSlide);
 		startAutoSlide();
-	}
+	} // === Lógica do Carrossel de Depoimentos (Corrigida) === // O seletor foi atualizado para a nova classe CSS
 
-	// === Lógica do Carrossel de Depoimentos ===
-	const testimonialCarousel = document.querySelector(".testimonial-carousel");
+	const testimonialCarousel = document.querySelector(
+		".testimonial-carousel-container"
+	);
 	const prevButton = document.getElementById("prev-testimonial");
 	const nextButton = document.getElementById("next-testimonial");
 	const testimonialItems = document.querySelectorAll(".testimonial");
@@ -156,44 +162,40 @@ document.addEventListener("DOMContentLoaded", () => {
 		testimonialItems.length > 0
 	) {
 		const itemWidth = testimonialItems[0].offsetWidth + 24; // Largura do item + gap (gap-6 = 24px)
-		let currentScrollPosition = 0;
+		let currentScrollPosition = 0; // Navega para a esquerda (depoimento anterior)
 
-		// Navega para a esquerda (depoimento anterior)
 		prevButton.addEventListener("click", () => {
 			if (currentScrollPosition > 0) {
-				currentScrollPosition -= itemWidth;
+				currentScrollPosition -= itemWidth; // Usa a variável `testimonialCarousel` para a rolagem
 				testimonialCarousel.scrollTo({
 					left: currentScrollPosition,
 					behavior: "smooth",
 				});
 			}
-		});
+		}); // Navega para a direita (próximo depoimento) e reseta no final
 
-		// Navega para a direita (próximo depoimento) e reseta no final
 		nextButton.addEventListener("click", () => {
 			const maxScroll =
 				testimonialCarousel.scrollWidth -
-				testimonialCarousel.clientWidth;
+				testimonialCarousel.clientWidth; // Se não for o último item, avança
 
-			// Se não for o último item, avança
 			if (currentScrollPosition < maxScroll) {
-				currentScrollPosition += itemWidth;
+				currentScrollPosition += itemWidth; // Usa a variável `testimonialCarousel` para a rolagem
 				testimonialCarousel.scrollTo({
 					left: currentScrollPosition,
 					behavior: "smooth",
 				});
 			} else {
 				// Se for o último, volta para o início
-				currentScrollPosition = 0;
+				currentScrollPosition = 0; // Usa a variável `testimonialCarousel` para a rolagem
 				testimonialCarousel.scrollTo({
 					left: currentScrollPosition,
 					behavior: "smooth",
 				});
 			}
 		});
-	}
+	} // === Lógica de Validação do Formulário (Revisada) ===
 
-	// === Lógica de Validação do Formulário (Revisada) ===
 	const contactForm = document.getElementById("contact-form");
 	const nameInput = document.getElementById("name");
 	const emailInput = document.getElementById("email");
@@ -207,14 +209,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		telephoneInput,
 		howMetSelect,
 		messageTextarea,
-	];
+	]; // Gerencia o feedback visual do campo (valid, invalid)
 
-	// Gerencia o feedback visual do campo (valid, invalid)
 	const setFeedback = (input, state, message = "") => {
 		const formGroup = input.parentElement;
-		const helper = formGroup.querySelector(".helper-text");
+		const helper = formGroup.querySelector(".helper-text"); // Limpa classes de feedback anteriores
 
-		// Limpa classes de feedback anteriores
 		formGroup.classList.remove("invalid", "valid");
 
 		if (state === "invalid") {
@@ -226,9 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		} else {
 			helper.textContent = "";
 		}
-	};
+	}; // Função de validação individual
 
-	// Função de validação individual
 	const validateField = (input) => {
 		const value = input.value.trim();
 
@@ -244,9 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Por favor, insira um e-mail válido."
 			);
 			return false;
-		}
+		} // Regex aprimorada para validar números de telefone com e sem máscara
 
-		// Regex aprimorada para validar números de telefone com e sem máscara
 		const phoneRegex =
 			/^\+?(\d{2,3})\s?\(?(\d{2,3})\)?\s?(\d{4,5})[-.\s]?(\d{4})$/;
 		if (input.id === "telephone" && !phoneRegex.test(value)) {
@@ -256,14 +254,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Insira um número de telefone válido."
 			);
 			return false;
-		}
+		} // Se passar, define como válido
 
-		// Se passar, define como válido
 		setFeedback(input, "valid");
 		return true;
-	};
+	}; // Máscara de telefone
 
-	// Máscara de telefone
 	const applyPhoneMask = (input) => {
 		let value = input.value.replace(/\D/g, ""); // Remove tudo que não é dígito
 
@@ -285,28 +281,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 
 		input.value = maskedValue;
-	};
+	}; // Adiciona o prefixo "+" no campo de telefone quando ele está vazio
 
-	// Adiciona o prefixo "+" no campo de telefone quando ele está vazio
 	telephoneInput.addEventListener("focus", () => {
 		if (!telephoneInput.value) {
 			telephoneInput.value = "+";
 		}
-	});
+	}); // Event listeners para a validação ao "clicar fora"
 
-	// Event listeners para a validação ao "clicar fora"
 	formFields.forEach((field) => {
 		field.addEventListener("blur", () => {
 			validateField(field);
 		});
-	});
+	}); // Event listener para a máscara de telefone
 
-	// Event listener para a máscara de telefone
 	telephoneInput.addEventListener("input", () => {
 		applyPhoneMask(telephoneInput);
-	});
+	}); // Event listener para a submissão do formulário
 
-	// Event listener para a submissão do formulário
 	contactForm.addEventListener("submit", (event) => {
 		event.preventDefault();
 
@@ -324,24 +316,24 @@ document.addEventListener("DOMContentLoaded", () => {
 				telephone: telephoneInput.value,
 				howMet: howMetSelect.value,
 				message: messageTextarea.value,
-			};
-			alert(
+			}; // Substitui o `alert` por uma mensagem em um modal para melhor experiência // Já que `alert()` não é uma boa prática
+			const modalMessage =
 				"Formulário enviado com sucesso!\n\nDados:\n" +
-					JSON.stringify(data, null, 2)
-			);
+				JSON.stringify(data, null, 2);
+			console.log(modalMessage); // Exibe no console por enquanto
+			// TODO: Implementar um modal personalizado para exibir a mensagem
+
 			contactForm.reset();
 			formFields.forEach((field) => {
 				setFeedback(field, "none");
 			});
 		}
-	});
+	}); // === Lógica de Troca de Tema (Versão Final e Robusta) ===
 
-	// === Lógica de Troca de Tema (Versão Final e Robusta) ===
 	const themeToggleButton = document.getElementById("theme-toggle-button");
 	const themeIcon = document.getElementById("theme-icon");
-	const htmlElement = document.documentElement; // Seleciona o elemento <html>
+	const htmlElement = document.documentElement; // Seleciona o elemento <html> // Função para aplicar o tema com base na preferência do usuário ou no localStorage
 
-	// Função para aplicar o tema com base na preferência do usuário ou no localStorage
 	const applyTheme = (theme) => {
 		if (theme === "dark") {
 			htmlElement.classList.add("dark");
@@ -350,9 +342,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			htmlElement.classList.remove("dark");
 			themeIcon.textContent = "dark_mode"; // Altera o ícone para o modo escuro
 		}
-	};
+	}; // Verifica o tema salvo no localStorage
 
-	// Verifica o tema salvo no localStorage
 	const savedTheme = localStorage.getItem("theme");
 
 	if (savedTheme) {
@@ -367,9 +358,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		// Caso contrário, usa o tema claro como padrão
 		applyTheme("light");
-	}
+	} // Adiciona o evento de clique ao botão
 
-	// Adiciona o evento de clique ao botão
 	themeToggleButton.addEventListener("click", () => {
 		// Adiciona uma classe para a animação
 		themeIcon.classList.add("shrink");
@@ -379,12 +369,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			const currentTheme = htmlElement.classList.contains("dark")
 				? "light"
 				: "dark";
-			applyTheme(currentTheme);
+			applyTheme(currentTheme); // Salva a nova preferência no localStorage
 
-			// Salva a nova preferência no localStorage
-			localStorage.setItem("theme", currentTheme);
+			localStorage.setItem("theme", currentTheme); // Remove a classe de animação
 
-			// Remove a classe de animação
 			themeIcon.classList.remove("shrink");
 		}, 150); // Tempo da transição da animação
 	});
