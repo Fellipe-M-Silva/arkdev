@@ -66,57 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	// === Lógica do Carrossel do Hero ===
-	// const heroTabs = document.querySelectorAll("#caroussel-tabs ul li");
-	// const heroSlides = document.querySelectorAll(".hero-slide");
-	// const heroMaskedImage = document.getElementById("hero-masked-image");
-
-	// let currentSlide = 0;
-	// let autoSlideInterval;
-	// const imageSources = [
-	// 	"./media/images/placeholder.png",
-	// 	"./media/images/placeholder.png",
-	// 	"./media/images/placeholder.png",
-	// ];
-
-	// const showSlide = (index) => {
-	// 	heroSlides.forEach((slide) => slide.classList.remove("active"));
-	// 	heroTabs.forEach((tab) => tab.classList.remove("active"));
-
-	// 	heroSlides[index].classList.add("active");
-	// 	heroTabs[index].classList.add("active");
-
-	// 	if (heroMaskedImage) {
-	// 		heroMaskedImage.style.backgroundImage = `url('${imageSources[index]}')`;
-	// 		heroMaskedImage.style.backgroundSize = "cover";
-	// 		heroMaskedImage.style.backgroundPosition = "center";
-	// 		heroMaskedImage.style.backgroundRepeat = "no-repeat";
-	// 	}
-	// };
-
-	// const nextSlide = () => {
-	// 	currentSlide = (currentSlide + 1) % heroSlides.length;
-	// 	showSlide(currentSlide);
-	// };
-
-	// const startAutoSlide = () => {
-	// 	clearInterval(autoSlideInterval);
-	// 	autoSlideInterval = setInterval(nextSlide, 15000);
-	// };
-
-	// heroTabs.forEach((tab, index) => {
-	// 	tab.addEventListener("click", () => {
-	// 		currentSlide = index;
-	// 		showSlide(currentSlide);
-	// 		startAutoSlide();
-	// 	});
-	// });
-
-	// if (heroSlides.length > 0) {
-	// 	showSlide(currentSlide);
-	// 	startAutoSlide();
-	// }
-
-	// === Lógica do Carrossel do Hero (versão revisada) ===
 	const heroTabs = document.querySelectorAll("#caroussel-tabs ul li");
 	const heroSlides = document.querySelectorAll(".hero-slide");
 	const heroMaskedImage = document.getElementById("hero-masked-image");
@@ -243,4 +192,148 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 	}
+
+	// === Lógica de Validação do Formulário (Revisada) ===
+	const contactForm = document.getElementById("contact-form");
+	const nameInput = document.getElementById("name");
+	const emailInput = document.getElementById("email");
+	const telephoneInput = document.getElementById("telephone");
+	const howMetSelect = document.getElementById("how-met");
+	const messageTextarea = document.getElementById("message");
+
+	const formFields = [
+		nameInput,
+		emailInput,
+		telephoneInput,
+		howMetSelect,
+		messageTextarea,
+	];
+
+	// Gerencia o feedback visual do campo (valid, invalid)
+	const setFeedback = (input, state, message = "") => {
+		const formGroup = input.parentElement;
+		const helper = formGroup.querySelector(".helper-text");
+
+		// Limpa classes de feedback anteriores
+		formGroup.classList.remove("invalid", "valid");
+
+		if (state === "invalid") {
+			formGroup.classList.add("invalid");
+			helper.textContent = message;
+		} else if (state === "valid") {
+			formGroup.classList.add("valid");
+			helper.textContent = "";
+		} else {
+			helper.textContent = "";
+		}
+	};
+
+	// Função de validação individual
+	const validateField = (input) => {
+		const value = input.value.trim();
+
+		if (input.required && !value) {
+			setFeedback(input, "invalid", "Este campo é obrigatório.");
+			return false;
+		}
+
+		if (input.type === "email" && !/^\S+@\S+\.\S+$/.test(value)) {
+			setFeedback(
+				input,
+				"invalid",
+				"Por favor, insira um e-mail válido."
+			);
+			return false;
+		}
+
+		// Regex aprimorada para validar números de telefone com e sem máscara
+		const phoneRegex =
+			/^\+?(\d{2,3})\s?\(?(\d{2,3})\)?\s?(\d{4,5})[-.\s]?(\d{4})$/;
+		if (input.id === "telephone" && !phoneRegex.test(value)) {
+			setFeedback(
+				input,
+				"invalid",
+				"Insira um número de telefone válido."
+			);
+			return false;
+		}
+
+		// Se passar, define como válido
+		setFeedback(input, "valid");
+		return true;
+	};
+
+	// Máscara de telefone
+	const applyPhoneMask = (input) => {
+		let value = input.value.replace(/\D/g, ""); // Remove tudo que não é dígito
+
+		let maskedValue = "";
+		if (value.length > 10) {
+			// Formato brasileiro (+55 11 99999-9999)
+			maskedValue = value.replace(
+				/^(\d{2})(\d{2})(\d{5})(\d{4})$/,
+				"+$1 ($2) $3-$4"
+			);
+		} else if (value.length > 9) {
+			// Formato norte-americano (+1 555 555-5555)
+			maskedValue = value.replace(
+				/^(\d{1})(\d{3})(\d{3})(\d{4})$/,
+				"+$1 ($2) $3-$4"
+			);
+		} else {
+			maskedValue = input.value; // Não aplica a máscara se o número for muito curto
+		}
+
+		input.value = maskedValue;
+	};
+
+	// Adiciona o prefixo "+" no campo de telefone quando ele está vazio
+	telephoneInput.addEventListener("focus", () => {
+		if (!telephoneInput.value) {
+			telephoneInput.value = "+";
+		}
+	});
+
+	// Event listeners para a validação ao "clicar fora"
+	formFields.forEach((field) => {
+		field.addEventListener("blur", () => {
+			validateField(field);
+		});
+	});
+
+	// Event listener para a máscara de telefone
+	telephoneInput.addEventListener("input", () => {
+		applyPhoneMask(telephoneInput);
+	});
+
+	// Event listener para a submissão do formulário
+	contactForm.addEventListener("submit", (event) => {
+		event.preventDefault();
+
+		let isFormValid = true;
+		formFields.forEach((field) => {
+			if (!validateField(field)) {
+				isFormValid = false;
+			}
+		});
+
+		if (isFormValid) {
+			const data = {
+				name: nameInput.value,
+				email: emailInput.value,
+				telephone: telephoneInput.value,
+				howMet: howMetSelect.value,
+				message: messageTextarea.value,
+			};
+			alert(
+				"Formulário enviado com sucesso!\n\nDados:\n" +
+				JSON.stringify(data, null, 2)
+				
+			);
+			contactForm.reset();
+			formFields.forEach(field => {
+					setFeedback(field, "none");
+			});
+		}
+	});
 });

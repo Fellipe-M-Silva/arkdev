@@ -396,9 +396,24 @@ p {
 .form-group textarea {
 	@apply w-full p-3 focus:bg-white border border-gray-600 rounded-md focus:ring-2 focus:ring-tan-hide-500 focus:outline-none;
 }
+.helper-text {
+	@apply text-rose-600 text-sm mt-1 -mb-4;
+}
+
+.invalid input,
+.invalid select,
+.invalid textarea {
+	@apply border-rose-600 ring-1 ring-rose-600;
+}
+
+.valid input,
+.valid select,
+.valid textarea {
+	@apply bg-white border-emerald-600 ring-1 ring-emerald-600;
+}
 
 .form-footer {
-	@apply flex items-center justify-between mt-4;
+	@apply flex items-center justify-between mt-8;
 }
 
 .form-footer p {
