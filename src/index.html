@@ -30,6 +30,17 @@
 
 		<meta name="description" content="ARKDEV Tech Systems" />
 		<meta name="author" content="ARKDEV Tech Systems" />
+		<script>
+    (function () {
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 	</head>
 	<body class="bg-white dark:bg-shark-950 text-shark-800 dark:text-white">
 		<header
@@ -53,13 +64,13 @@
 					</ul>
 				</nav>
 				<div class="flex flex-row gap-0.5 ml-4">
-					<button
-						class="icon-button flex items-center justify-center"
+					<button id="theme-toggle-button"
+						class="icon-button"
 					>
-						<span class="material-symbols-outlined">dark_mode</span>
+						<span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
 					</button>
 					<button
-						class="icon-button flex items-center justify-center"
+						class="icon-button"
 					>
 						<span class="material-symbols-outlined">language</span>
 						<span class="material-symbols-outlined"
@@ -68,7 +79,7 @@
 					</button>
 					<button
 						id="open-menu"
-						class="icon-button flex items-center justify-center md:hidden"
+						class="icon-button"
 					>
 						<span class="material-symbols-outlined">menu</span>
 					</button>

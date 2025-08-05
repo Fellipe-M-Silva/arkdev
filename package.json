@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind:build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css",
-    "tailwind:watch": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "tailwind:watch": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --dark-mode=class --watch",
     "dev-server": "node src/server.js",
     "dev": "concurrently \"npm run tailwind:watch\" \"npm run dev-server\""
   },

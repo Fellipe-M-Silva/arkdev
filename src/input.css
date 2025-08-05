@@ -1,5 +1,6 @@
 @import "tailwindcss";
 /* @import "./custom.css"; */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
 	--color-tan-hide-50: #fff7ed;
@@ -76,9 +77,12 @@
 }
 
 #menu ul li a {
-	@apply text-shark-800 dark:text-shark-100 hover:text-shark-950 dark:hover:text-white hover:font-semibold transition-colors duration-200;
+	@apply text-shark-800 dark:text-shark-100 hover:text-shark-950 dark:hover:text-white hover:font-semibold transition-colors duration-200 px-1 py-0.5 rounded-md;
 }
 
+#menu-mobile ul {
+	@apply flex flex-col gap-4;
+}
 #menu-mobile ul li a {
 	@apply text-lg text-shark-800 dark:text-shark-100 focus:text-shark-950 dark:hover:text-white focus:font-semibold transition-colors duration-200 mb-6;
 }
@@ -328,20 +332,22 @@ p {
 .icon-button {
 	@apply text-shark-800 dark:text-shark-100 p-2 rounded-full transition-colors duration-200 hover:text-shark-950 dark:hover:text-white hover:bg-shark-100 dark:hover:bg-shark-800 flex items-center justify-center active:bg-shark-200 dark:active:bg-shark-700;
 }
-/* .icon-button:hover {
-	@apply bg-shark-100;
-} */
 .icon-button:hover,
 .icon-button:active span {
 	@apply [font-variation-settings:'FILL'_1,_'wght'_400];
 }
-/* 
-.icon-button:active {
-	@apply bg-shark-200 ;
-} */
-
 .icon-filled {
 	@apply [font-variation-settings:'FILL'_1,_'wght'_400];
+}
+#open-menu {
+	@apply md:hidden;
+}
+.theme-icon-animation {
+	transition: transform 0.1s ease-in-out;
+}
+
+.theme-icon-animation.shrink {
+	transform: scale(0);
 }
 
 .testimonial-carousel {

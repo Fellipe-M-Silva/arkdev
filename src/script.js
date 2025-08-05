@@ -327,13 +327,65 @@ document.addEventListener("DOMContentLoaded", () => {
 			};
 			alert(
 				"Formulário enviado com sucesso!\n\nDados:\n" +
-				JSON.stringify(data, null, 2)
-				
+					JSON.stringify(data, null, 2)
 			);
 			contactForm.reset();
-			formFields.forEach(field => {
-					setFeedback(field, "none");
+			formFields.forEach((field) => {
+				setFeedback(field, "none");
 			});
 		}
+	});
+
+	// === Lógica de Troca de Tema (Versão Final e Robusta) ===
+	const themeToggleButton = document.getElementById("theme-toggle-button");
+	const themeIcon = document.getElementById("theme-icon");
+	const htmlElement = document.documentElement; // Seleciona o elemento <html>
+
+	// Função para aplicar o tema com base na preferência do usuário ou no localStorage
+	const applyTheme = (theme) => {
+		if (theme === "dark") {
+			htmlElement.classList.add("dark");
+			themeIcon.textContent = "light_mode"; // Altera o ícone para o modo claro
+		} else {
+			htmlElement.classList.remove("dark");
+			themeIcon.textContent = "dark_mode"; // Altera o ícone para o modo escuro
+		}
+	};
+
+	// Verifica o tema salvo no localStorage
+	const savedTheme = localStorage.getItem("theme");
+
+	if (savedTheme) {
+		// Se houver um tema salvo, aplica-o
+		applyTheme(savedTheme);
+	} else if (
+		window.matchMedia &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches
+	) {
+		// Se não houver, verifica a preferência do sistema operacional
+		applyTheme("dark");
+	} else {
+		// Caso contrário, usa o tema claro como padrão
+		applyTheme("light");
+	}
+
+	// Adiciona o evento de clique ao botão
+	themeToggleButton.addEventListener("click", () => {
+		// Adiciona uma classe para a animação
+		themeIcon.classList.add("shrink");
+
+		setTimeout(() => {
+			// Alterna entre o modo claro e escuro
+			const currentTheme = htmlElement.classList.contains("dark")
+				? "light"
+				: "dark";
+			applyTheme(currentTheme);
+
+			// Salva a nova preferência no localStorage
+			localStorage.setItem("theme", currentTheme);
+
+			// Remove a classe de animação
+			themeIcon.classList.remove("shrink");
+		}, 150); // Tempo da transição da animação
 	});
 });
