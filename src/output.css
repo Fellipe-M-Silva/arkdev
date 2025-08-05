@@ -238,14 +238,6 @@
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .font-semibold {
-    --tw-font-weight: var(--font-weight-semibold);
-    font-weight: var(--font-weight-semibold);
-  }
   .blur {
     --tw-blur: blur(8px);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -829,9 +821,12 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: calc(var(--spacing) * 6);
+  gap: calc(var(--spacing) * 4);
   @media (width >= 48rem) {
     flex-direction: row;
+  }
+  @media (width >= 48rem) {
+    gap: calc(var(--spacing) * 6);
   }
 }
 #solutions-section > :nth-child(even):not(:first-child) {
@@ -935,12 +930,6 @@ section {
   &:where(.dark, .dark *) {
     border-color: var(--color-tan-hide-300);
   }
-}
-#testimonials-section h2 {
-  font-size: var(--text-2xl);
-  line-height: var(--tw-leading, var(--text-2xl--line-height));
-  --tw-font-weight: var(--font-weight-semibold);
-  font-weight: var(--font-weight-semibold);
 }
 .testimonial-carousel-container {
   display: flex;
@@ -1154,12 +1143,10 @@ section {
   justify-content: space-between;
 }
 .form-privacy-text {
+  margin-right: calc(var(--spacing) * 4);
   font-size: var(--text-sm);
   line-height: var(--tw-leading, var(--text-sm--line-height));
   color: var(--color-gray-600);
-  @media (width >= 48rem) {
-    margin-right: calc(var(--spacing) * 4);
-  }
   &:where(.dark, .dark *) {
     color: var(--color-gray-300);
   }
@@ -1266,10 +1253,13 @@ footer {
 }
 .footer-section span {
   display: inline-block;
-  min-width: calc(var(--spacing) * 20);
+  min-width: 160px;
   --tw-font-weight: var(--font-weight-semibold);
   font-weight: var(--font-weight-semibold);
   color: var(--color-shark-100);
+  @media (width >= 40rem) {
+    min-width: 120px;
+  }
 }
 .footer-section p {
   margin-bottom: calc(var(--spacing) * 1);
@@ -1629,10 +1619,6 @@ p {
   syntax: "*";
   inherits: false;
 }
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -1746,6 +1732,10 @@ p {
   inherits: false;
   initial-value: 0;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-scale-x {
   syntax: "*";
   inherits: false;
@@ -1856,7 +1846,6 @@ p {
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
-      --tw-font-weight: initial;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
@@ -1884,6 +1873,7 @@ p {
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-font-weight: initial;
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;

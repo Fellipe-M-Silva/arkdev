@@ -42,7 +42,7 @@
     <meta name="author" content="ARKDEV Tech Systems" />
   </head>
 
-	<body>
+  <body>
     <header class="main-header">
       <div class="content header-content">
         <div class="header-logo-container">
@@ -83,21 +83,23 @@
           >
             <span class="material-symbols-outlined">menu</span>
           </button>
-					<div id="language-modal" class="language-modal-overlay">
-      			<div class="language-modal">
-        			<h4 class="language-modal-title" data-i18n="modal_title">Selecione o Idioma</h4>
-        			<button id="language-portuguese" class="language-option" data-lang="pt-br">
-          			<span data-i18n="lang_pt">Português</span>
-       				 </button>
-        			<button id="language-english" class="language-option" data-lang="en">
-         				<span data-i18n="lang_en">Inglês</span>
-							</button>
-     			</div>
-					</div>
-				</div>
-			</div>
-		</header>
-    
+          
+          <div id="language-modal" class="language-modal-overlay">
+            <div class="language-modal">
+              <h4 class="language-modal-title" data-i18n="modal_title">Selecione o Idioma</h4>
+              <button id="language-portuguese" class="language-option" data-lang="pt-br">
+                <span data-i18n="lang_pt">Português</span>
+              </button>
+              <button id="language-english" class="language-option" data-lang="en">
+                <span data-i18n="lang_en">Inglês</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
     <div
       id="menu-overlay"
       class="menu-overlay"
@@ -114,6 +116,7 @@
           <span class="material-symbols-outlined">close</span>
         </button>
         <ul class="mobile-nav-list">
+          <li><a href="#hero-section" data-i18n="menu_home">Início</a></li>
           <li><a href="#solutions-section" data-i18n="menu_solutions">Soluções</a></li>
           <li><a href="#testimonials-section" data-i18n="menu_testimonials">Depoimentos</a></li>
           <li><a href="#contact-section" data-i18n="menu_contact">Contato</a></li>
@@ -193,9 +196,9 @@
               id="caroussel-tabs-list"
               class="hero-tabs-list"
             >
-              <li id="tab-1" class="active">Petróleo e Gás</li>
-              <li id="tab-2">Cibersegurança</li>
-              <li id="tab-3">Motores a diesel</li>
+              <li data-i18n="tab_1" id="tab-1" class="active">Petróleo e Gás</li>
+              <li data-i18n="tab_2" id="tab-2">Cibersegurança</li>
+              <li data-i18n="tab_3" id="tab-3">Motores a diesel</li>
             </ul>
           </div>
           
@@ -409,7 +412,7 @@
 
       <section id="testimonials-section">
         <div class="content title-and-subtitle">
-          <h2 class="text-2xl font-semibold" data-i18n="testimonials_title">
+          <h2 data-i18n="testimonials_title">
             O que nossos clientes dizem
           </h2>
           <p data-i18n="testimonials_text">
@@ -777,9 +780,9 @@
           <div class="footer-section">
             <h6 data-i18n="footer_address_title">Endereço</h6>
             <hr class="footer-section-divider" />
-            <p>Rua Exemplo, 123</p>
-            <p>CEP: 12345-678</p>
-            <p>Centro, Quixadá–CE, Brasil</p>
+            <p data-i18n="street_address">Rua Exemplo, 123</p>
+            <p data-i18n="street_address_zip">CEP: 12345-678</p>
+            <p data-i18n="street_address_city">Centro, Quixadá–CE, Brasil</p>
           </div>
 
           <div class="footer-section">
@@ -788,7 +791,7 @@
 
             <p><span data-i18n="footer_phone">Telefone</span> +55 85 91234-5678</p>
             <p><span data-i18n="footer_whatsapp">WhatsApp</span> +55 85 99876-5432</p>
-            <p><span data-i18n="footer_email">Email</span> contact@arkdev.systems</p>
+            <p><span data-i18n="footer_email">E-mail</span> contact@arkdev.systems</p>
             <p><span data-i18n="footer_support">Suporte</span> support@arkdev.systems</p>
             <p><span data-i18n="footer_sales">Vendas</span> sales@arkdev.systems</p>
           </div>
@@ -808,7 +811,7 @@
         <hr class="footer-divider" />
         <p class="footer-copyright" data-i18n="footer_copyright">
           © 2025 ArkDev. Todos os direitos reservados. |
-          <a href="#" data-i18n="footer_privacy">Política de Privacidade</a>
+          <a href="#" data-i18n="footer_privacy" target="_blank">Política de Privacidade</a>
         </p>
         <img
           src="./media/always-beyond.svg"

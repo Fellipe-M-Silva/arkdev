@@ -294,7 +294,7 @@ section {
 
 /* --- Seção de Soluções --- */
 .solution {
-	@apply flex flex-col md:flex-row gap-6 items-start mb-12;
+	@apply flex flex-col md:flex-row gap-4 md:gap-6 items-start mb-12;
 }
 #solutions-section > :nth-child(even):not(:first-child) {
 	@apply md:flex-row-reverse;
@@ -322,9 +322,6 @@ section {
 }
 
 /* --- Seção de Depoimentos --- */
-#testimonials-section h2 {
-	@apply text-2xl font-semibold;
-}
 .testimonial-carousel-container {
 	@apply flex gap-6 overflow-x-auto snap-x snap-mandatory;
 	&::-webkit-scrollbar {
@@ -399,7 +396,7 @@ section {
 	@apply flex items-center justify-between mt-8;
 }
 .form-privacy-text {
-	@apply text-sm text-gray-600 dark:text-gray-300 md:mr-4;
+	@apply text-sm text-gray-600 dark:text-gray-300 mr-4;
 }
 
 /* --- Rodapé (Footer) --- */
@@ -441,7 +438,7 @@ footer {
 	@apply border-t-2 border-tan-hide-300 mb-4 w-10;
 }
 .footer-section span {
-	@apply text-shark-100 font-semibold min-w-20 inline-block;
+	@apply text-shark-100 font-semibold min-w-[160px] sm:min-w-[120px] inline-block;
 }
 .footer-section p {
 	@apply text-shark-200 text-base mb-1;
