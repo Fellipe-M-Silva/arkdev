@@ -82,7 +82,9 @@
 							fill="currentColor"
 						/>
 					</svg>
-					<p class="header-logo-text">Cibersegurança</p>
+					<p class="header-logo-text" data-i18n="app_title">
+						Cibersegurança
+					</p>
 				</a>
 				<nav id="menu" class="main-nav">
 					<ul class="main-nav-list">
@@ -90,22 +92,22 @@
 							<a href="/" data-i18n="nav_menu_home">Início</a>
 						</li>
 						<li>
-							<a
-								href="#solutions-section"
-								data-i18n="menu_solutions"
-								>Soluções</a
+							<a href="/oil-and-gas" data-i18n="menu_services_oil"
+								>Petróleo e Gás</a
 							>
 						</li>
 						<li>
 							<a
-								href="#testimonials-section"
-								data-i18n="menu_testimonials"
-								>Depoimentos</a
+								href="/cybersecurity"
+								data-i18n="menu_services_cyber"
+								>Cibersegurança</a
 							>
 						</li>
 						<li>
-							<a href="#contact-section" data-i18n="menu_contact"
-								>Contato</a
+							<a
+								href="/diesel-engines"
+								data-i18n="menu_services_diesel"
+								>Diesel</a
 							>
 						</li>
 					</ul>
@@ -156,33 +158,38 @@
 
 		<div id="menu-overlay" class="menu-overlay">
 			<nav id="menu-mobile" class="mobile-nav">
-				<h3 class="mobile-nav-title" data-i18n="menu_title">Menu</h3>
+				<h3 class="mobile-nav-title" data-i18n="menu_title_services">
+					Serviços
+				</h3>
+				<ul class="mobile-nav-list">
+					<li>
+						<a href="/oil-and-gas" data-i18n="menu_services_oil"
+							>Petróleo e Gás</a
+						>
+					</li>
+					<li>
+						<a href="/cybersecurity" data-i18n="menu_services_cyber"
+							>Cibersegurança</a
+						>
+					</li>
+					<li>
+						<a
+							href="/diesel-engines"
+							data-i18n="menu_services_diesel"
+							>Motores a diesel</a
+						>
+					</li>
+				</ul>
 				<button
 					id="close-menu"
 					class="icon-button absolute-close-button"
 				>
 					<span class="material-symbols-outlined">close</span>
 				</button>
+				<h3 class="mobile-nav-title" data-i18n="menu_title">Menu</h3>
 				<ul class="mobile-nav-list">
 					<li>
 						<a href="/" data-i18n="menu_home">Início</a>
-					</li>
-					<li>
-						<a href="#solutions-section" data-i18n="menu_solutions"
-							>Soluções</a
-						>
-					</li>
-					<li>
-						<a
-							href="#testimonials-section"
-							data-i18n="menu_testimonials"
-							>Depoimentos</a
-						>
-					</li>
-					<li>
-						<a href="#contact-section" data-i18n="menu_contact"
-							>Contato</a
-						>
 					</li>
 				</ul>
 			</nav>
@@ -192,9 +199,13 @@
 			<section id="hero-section" class="hero-section">
 				<div class="content service-hero-container">
 					<div class="hero-text-container">
-						<h1 class="hero-title" data-i18n="hero_title">
-							Soluções de Cibersegurança para um
-							<span class="highlight-ciberseguranca"
+						<h1 class="hero-title">
+							<span data-i18n="hero_title_base">
+								Soluções de Cibersegurança para um
+							</span>
+							<span
+								class="highlight-ciberseguranca"
+								data-i18n="hero_title_highlight"
 								>Mundo Conectado</span
 							>
 						</h1>
@@ -204,11 +215,64 @@
 							enfrentar as ameaças do mundo moderno.
 						</p>
 						<div class="service-hero-actions">
-							<button class="cta-ciberseguranca">
+							<button
+								class="cta-ciberseguranca"
+								data-i18n="cta_button_1"
+							>
 								Trabalhe conosco
 							</button>
-							<button class="cta-secondary">Saiba mais</button>
+							<button
+								class="cta-secondary"
+								data-i18n="cta_button_2"
+							>
+								Saiba mais
+							</button>
 						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="service-list-section">
+				<div class="content">
+					<div class="service-list projects-ciberseguranca">
+						<article class="service">
+							<div class="service-content service-ciberseguranca">
+								<h3 data-i18n="projects_title_1">Serviço 1</h3>
+								<hr class="h3-underscore" />
+								<p data-i18n="projects_text_1">
+									Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Duis volutpat quis odio
+									eget efficitur! Use this link and fusce
+									mollis felis non pharetra feugiat
+								</p>
+							</div>
+						</article>
+
+						<article class="service">
+							<div class="service-content service-ciberseguranca">
+								<h3 data-i18n="projects_title_2">Serviço 2</h3>
+								<hr class="h3-underscore" />
+								<p data-i18n="projects_text_2">
+									Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Duis volutpat quis odio
+									eget efficitur! Use this link and fusce
+									mollis felis non pharetra feugiat
+								</p>
+							</div>
+						</article>
+
+						<article class="service">
+							<div class="service-content service-ciberseguranca">
+								<h3 data-i18n="projects_title_3">Serviço 3</h3>
+								<hr class="h3-underscore" />
+								<p data-i18n="projects_text_3">
+									Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Duis volutpat quis odio
+									eget efficitur! Use this link and fusce
+									mollis felis non pharetra feugiat
+								</p>
+							</div>
+						</article>
 					</div>
 				</div>
 			</section>
@@ -216,8 +280,8 @@
 			<section id="projects-section">
 				<div class="content">
 					<div class="title-and-subtitle">
-						<h2 data-i18n="solutions_title">Projetos</h2>
-						<p data-i18n="solutions_text">
+						<h2 data-i18n="projects_grid_title">Projetos</h2>
+						<p data-i18n="projects_grid_text">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Duis volutpat quis odio eget efficitur! Use
 							this link and fusce mollis felis non pharetra
@@ -232,7 +296,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -269,7 +333,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -306,7 +370,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -343,7 +407,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -380,7 +444,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -417,7 +481,7 @@
 									alt="Sistema de verificação de válvulas"
 									class="project-image"
 								/>
-								<h3 data-i18n="projects_title_1">
+								<h3 data-i18n="projects_grid_item_title">
 									Sistema de verificação de válvulas
 								</h3>
 								<hr class="h3-underscore" />
@@ -452,17 +516,27 @@
 
 			<section id="cta-section" class="cta-section ciberseguranca">
 				<div class="content">
-					<h3>Lorem ipsum dolor sit amet</h3>
-					<p>
+					<h3 data-i18n="cta_section_title">
+						Lorem ipsum dolor sit amet
+					</h3>
+					<p data-i18n="cta_section_text">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Sed do eiusmod tempor incididunt ut labore et dolore
 						magna aliqua.
 					</p>
 					<div class="cta-buttons-container">
-						<a href="#" class="cta-ciberseguranca"
+						<a
+							href="#"
+							class="cta-ciberseguranca"
+							data-i18n="cta_section_cta_1"
 							>Proteja o seu sistema</a
 						>
-						<a href="#" class="cta-secondary">Solicite uma demo</a>
+						<a
+							href="#"
+							class="cta-secondary"
+							data-i18n="cta_section_cta_2"
+							>Solicite uma demo</a
+						>
 					</div>
 				</div>
 			</section>
@@ -627,7 +701,6 @@
 		<footer>
 			<div class="content inverse footer-content-wrapper">
 				<div class="footer-logo-container ciberseguranca">
-					<!-- <img src="./media/logo-footer.svg" alt="Logo" /> -->
 					<svg
 						class="footer-logo-container ciberseguranca"
 						width="201"

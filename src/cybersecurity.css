@@ -75,8 +75,11 @@ button.primary-ciberseguranca {
 	@apply bg-shark-200 dark:bg-shark-700;
 }
 
+#cta-section {
+	@apply mt-20;
+}
 .cta-section {
-	@apply flex flex-col items-center gap-6 bg-shark-50 dark:bg-shark-900 p-8;
+	@apply flex flex-col items-center gap-4 bg-shark-50 dark:bg-shark-900 p-8;
 }
 
 .cta-section .content {
@@ -84,4 +87,15 @@ button.primary-ciberseguranca {
 }
 .cta-buttons-container {
 	@apply flex flex-col md:flex-row gap-4;
+}
+
+.service-list {
+	@apply flex flex-col lg:flex-row gap-4;
+}
+.service-content {
+	@apply flex flex-col gap-4 p-6 bg-shark-50 dark:bg-shark-900 border border-shark-200 dark:border-shark-700 rounded-lg hover:bg-shark-100 dark:hover:bg-shark-800 transition duration-200;
+}
+.service-ciberseguranca {
+	@apply bg-puerto-rico-50 hover:bg-puerto-rico-100 
+  border-puerto-rico-600 dark:bg-puerto-rico-900 dark:hover:bg-puerto-rico-700 dark:border-puerto-rico-600 dark:text-white;
 }

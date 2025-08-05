@@ -74,6 +74,7 @@
     --color-carmine-800: #be0028;
     --color-carmine-900: #a10022;
     --color-puerto-rico-50: #eefffb;
+    --color-puerto-rico-100: #c6fff4;
     --color-puerto-rico-200: #8effeb;
     --color-puerto-rico-300: #4dfbdf;
     --color-puerto-rico-600: #00a495;
@@ -406,6 +407,7 @@ section {
   translate: var(--tw-translate-x) var(--tw-translate-y);
 }
 .mobile-nav-list {
+  margin-bottom: calc(var(--spacing) * 10);
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 4);
@@ -1239,6 +1241,7 @@ footer {
 }
 .footer-logo-signature {
   margin-top: calc(var(--spacing) * 20);
+  align-self: center;
 }
 .footer-description {
   text-align: center;
@@ -1952,11 +1955,14 @@ button.primary-ciberseguranca {
     background-color: var(--color-shark-700);
   }
 }
+#cta-section {
+  margin-top: calc(var(--spacing) * 20);
+}
 .cta-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: calc(var(--spacing) * 6);
+  gap: calc(var(--spacing) * 4);
   background-color: var(--color-shark-50);
   padding: calc(var(--spacing) * 8);
   &:where(.dark, .dark *) {
@@ -1982,6 +1988,73 @@ button.primary-ciberseguranca {
   gap: calc(var(--spacing) * 4);
   @media (width >= 48rem) {
     flex-direction: row;
+  }
+}
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  @media (width >= 64rem) {
+    flex-direction: row;
+  }
+}
+.service-content {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  border-radius: var(--radius-lg);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-shark-200);
+  background-color: var(--color-shark-50);
+  padding: calc(var(--spacing) * 6);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 200ms;
+  transition-duration: 200ms;
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-shark-100);
+    }
+  }
+  &:where(.dark, .dark *) {
+    border-color: var(--color-shark-700);
+  }
+  &:where(.dark, .dark *) {
+    background-color: var(--color-shark-900);
+  }
+  &:where(.dark, .dark *) {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-shark-800);
+      }
+    }
+  }
+}
+.service-ciberseguranca {
+  border-color: var(--color-puerto-rico-600);
+  background-color: var(--color-puerto-rico-50);
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-puerto-rico-100);
+    }
+  }
+  &:where(.dark, .dark *) {
+    border-color: var(--color-puerto-rico-600);
+  }
+  &:where(.dark, .dark *) {
+    background-color: var(--color-puerto-rico-900);
+  }
+  &:where(.dark, .dark *) {
+    color: var(--color-white);
+  }
+  &:where(.dark, .dark *) {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-puerto-rico-700);
+      }
+    }
   }
 }
 @property --tw-rotate-x {
