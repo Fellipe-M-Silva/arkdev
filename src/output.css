@@ -1676,18 +1676,28 @@ p {
 }
 .service-hero-container {
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.service-hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    flex-direction: row;
+  }
+}
 .hero-text-container {
   display: flex;
-  max-width: calc(1/2 * 100%);
   flex-direction: column;
   align-items: center;
   gap: calc(var(--spacing) * 6);
   text-align: center;
+  @media (width >= 48rem) {
+    max-width: calc(1/2 * 100%);
+  }
 }
 .cta-ciberseguranca {
   width: 100%;
@@ -1940,6 +1950,38 @@ button.primary-ciberseguranca {
   background-color: var(--color-shark-200);
   &:where(.dark, .dark *) {
     background-color: var(--color-shark-700);
+  }
+}
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 6);
+  background-color: var(--color-shark-50);
+  padding: calc(var(--spacing) * 8);
+  &:where(.dark, .dark *) {
+    background-color: var(--color-shark-900);
+  }
+}
+.cta-section .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--spacing) * 8);
+  text-align: center;
+  @media (width >= 48rem) {
+    width: calc(2/3 * 100%);
+  }
+  @media (width >= 64rem) {
+    width: calc(1/2 * 100%);
+  }
+}
+.cta-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+  @media (width >= 48rem) {
+    flex-direction: row;
   }
 }
 @property --tw-rotate-x {
